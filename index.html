@@ -6,22 +6,24 @@
 <title>Pensamiento Matemático I</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Young+Serif&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Lexend:wght@500;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
-/* Layout: hoja de cuaderno cuadriculado con margen rojo; columna de entradas + índice de propósitos formativos */
+/* Layout: pizarrón azul con los 7 propósitos como fichas de color (los mismos colores de presentaciones y videos) sobre hoja cuadriculada; columna de entradas + índice */
 :root{
   --paper:#fbfcfe; --grid:#e3e9f4; --ink:#1b2340; --ink2:#55607e;
   --blue:#2343b8; --blue-soft:#e6ebfb; --red:#d24a4a; --line:#d6dceb; --card:#ffffff;
-  --f-display:"Young Serif", Georgia, "Times New Roman", serif;
+  --board:#1e2a6e; --chalk:#ffd23f; --on-board:#ffffff; --on-board2:#c9d3ff;
+  --pf1:#8a2bc9; --pf2:#c45f06; --pf3:#1d6fd8; --pf4:#2e8a49; --pf5:#0f7f7a; --pf6:#c22a5f; --pf7:#6c3fc4; --c:var(--blue); --tint:0%;
+  --f-display:"Lexend", "Atkinson Hyperlegible", system-ui, sans-serif;
   --f-body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --paper:#12172a; --grid:#1b2238; --ink:#e8ecf7; --ink2:#a3acc7;
-  --blue:#8ea6ff; --blue-soft:#1e2950; --red:#ff7b7b; --line:#2a3352; --card:#171e35; color-scheme:dark}}
+  --blue:#8ea6ff; --blue-soft:#1e2950; --red:#ff7b7b; --line:#2a3352; --card:#171e35; --board:#151d4d; --tint:40%; color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#12172a; --grid:#1b2238; --ink:#e8ecf7; --ink2:#a3acc7;
-  --blue:#8ea6ff; --blue-soft:#1e2950; --red:#ff7b7b; --line:#2a3352; --card:#171e35; color-scheme:dark}
+  --blue:#8ea6ff; --blue-soft:#1e2950; --red:#ff7b7b; --line:#2a3352; --card:#171e35; --board:#151d4d; --tint:40%; color-scheme:dark}
 
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;
@@ -120,14 +122,78 @@ aside{min-width:0}
 footer{border-top:2px solid var(--red);padding-block:20px 40px;color:var(--ink2);font-size:14px}
 @media (max-width:480px){article{padding:20px 16px 18px 30px}article::before{left:14px}}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+
+/* ---- Identidad de la materia ---- */
+h1,h2,h3,.side h2{font-family:var(--f-display)}
+header.top{background:var(--board);color:var(--on-board);border-bottom:6px solid var(--chalk);padding-block:44px 34px;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:32px 32px;position:relative;overflow:hidden}
+header.top .eyebrow{color:var(--chalk)}
+header.top h1{font-weight:800;letter-spacing:-.02em;color:var(--on-board);margin:.2em 0 .25em}
+header.top h1 .num{color:var(--chalk)}
+header.top .lede{color:var(--on-board2)}
+header.top .who{color:var(--on-board2)}
+header.top .who b{color:var(--on-board)}
+.formulas{position:absolute;inset:0;pointer-events:none;font-family:var(--f-mono);color:rgba(255,255,255,.08);font-size:30px;line-height:1}
+.formulas span{position:absolute;white-space:nowrap}
+.hero-main{position:relative}
+.nline{display:block;width:100%;max-width:520px;height:auto;margin-top:18px}
+.tiles{position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;margin-top:28px}
+.tile{display:flex;flex-direction:column;justify-content:space-between;gap:8px;min-height:104px;padding:10px 12px;border-radius:10px;background:var(--c);color:#fff;text-decoration:none;box-shadow:0 3px 0 rgba(0,0,0,.3);transition:transform .15s}
+.tile:hover{transform:translateY(-3px)}
+.tile .sym{font-family:var(--f-mono);font-weight:700;font-size:21px;line-height:1.1}
+.tile .tn{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.9;font-weight:700}
+.tile .tt{display:block;font-size:14px;line-height:1.2;font-weight:700}
+@media (max-width:860px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:480px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile:last-child{grid-column:span 2;min-height:84px}.formulas{display:none}}
+@media (prefers-reduced-motion:reduce){.tile{transition:none}}
+[data-pf="1"]{--c:var(--pf1)}[data-pf="2"]{--c:var(--pf2)}[data-pf="3"]{--c:var(--pf3)}[data-pf="4"]{--c:var(--pf4)}[data-pf="5"]{--c:var(--pf5)}[data-pf="6"]{--c:var(--pf6)}[data-pf="7"]{--c:var(--pf7)}
+article{border-radius:10px;padding:24px 24px 22px 34px}
+article::before{left:0;top:0;bottom:0;width:8px;background:var(--c);opacity:1;border-radius:10px 0 0 10px}
+article h2{font-weight:700;letter-spacing:-.01em}
+article .tag.pfc{background:var(--c);color:#fff}
+.pinned{border:2px solid var(--chalk)}
+.pinned::before{background:var(--chalk)}
+.chip[aria-pressed="true"]{background:var(--board);border-color:var(--board);color:#fff}
+article[data-pf] .btn{background:var(--c);color:#fff}
+article[data-pf] .btn.ghost{background:transparent;color:color-mix(in srgb,var(--c),#fff var(--tint));border-color:currentColor}
+.pf{border-left:6px solid var(--c);padding-left:16px;margin-block:10px;border-bottom:none}
+.pf-list{border-top:none}
+.pf-n{display:inline-grid;place-items:center;min-width:46px;height:28px;border-radius:6px;background:var(--c);color:#fff;font-weight:700}
+.pf-h h3{font-weight:700;font-size:20px}
+.pfs .n{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;font-weight:700;padding:0;font-size:15px}
+.side h2{font-weight:700;font-size:20px}
+.next{border:2px solid var(--chalk)}
+footer{border-top:6px solid var(--chalk);background:var(--board);color:var(--on-board2)}
+@media (max-width:480px){article{padding:20px 16px 18px 24px}}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap">
-  <div class="eyebrow">Preparatoria Oficial Núm. 252 · Primer semestre</div>
-  <h1>Pensamiento Matemático&nbsp;<span style="color:var(--blue)">I</span></h1>
-  <p class="lede">Videos, presentaciones y cuadernillos de la clase para repasar en casa. Cada entrada corresponde a un propósito formativo del programa.</p>
-  <div class="who"><span>Docente: <b>Raciel Ramos Melecio</b></span><span>Asignatura: <b>Pensamiento Matemático I</b></span></div>
+<header class="top">
+  <div class="formulas" aria-hidden="true"><span style="top:10%;right:4%">a² + b² = c²</span><span style="top:44%;right:20%">p ∧ q → r</span><span style="top:66%;right:3%">√144 = 12</span><span style="top:24%;right:32%">¾ = 0.75 = 75%</span></div>
+  <div class="wrap">
+  <div class="hero-main">
+    <div class="eyebrow">Preparatoria Oficial Núm. 252 · Primer semestre · Pensamiento aritmético</div>
+    <h1>Pensamiento Matemático <span class="num">I</span></h1>
+    <p class="lede">Videos, presentaciones y cuadernillos de la clase para repasar en casa. Cada color es un propósito formativo, igual que en tus presentaciones y videos.</p>
+    <div class="who"><span>Docente: <b>Raciel Ramos Melecio</b></span><span>Asignatura: <b>Pensamiento Matemático I</b></span></div>
+    <svg class="nline" viewBox="0 0 520 54" role="img" aria-label="Recta numérica de menos 3 a 3">
+      <line x1="10" y1="22" x2="510" y2="22" stroke="#c9d3ff" stroke-width="2"/>
+      <path d="M510 22 l-10 -6 v12 z" fill="#c9d3ff"/><path d="M10 22 l10 -6 v12 z" fill="#c9d3ff"/>
+      <g stroke="#c9d3ff" stroke-width="2"><line x1="50" y1="15" x2="50" y2="29"/><line x1="120" y1="15" x2="120" y2="29"/><line x1="190" y1="15" x2="190" y2="29"/><line x1="330" y1="15" x2="330" y2="29"/><line x1="400" y1="15" x2="400" y2="29"/><line x1="470" y1="15" x2="470" y2="29"/></g>
+      <line x1="260" y1="12" x2="260" y2="32" stroke="#ffd23f" stroke-width="3"/>
+      <g fill="#c9d3ff" font-family="JetBrains Mono, monospace" font-size="14" text-anchor="middle"><text x="50" y="48">−3</text><text x="120" y="48">−2</text><text x="190" y="48">−1</text><text x="260" y="48" fill="#ffd23f">0</text><text x="330" y="48">1</text><text x="400" y="48">2</text><text x="470" y="48">3</text></g>
+      <circle cx="295" cy="22" r="6" fill="#ffd23f"/><text x="295" y="9" fill="#ffd23f" font-family="JetBrains Mono, monospace" font-size="13" text-anchor="middle">½</text>
+    </svg>
+  </div>
+  <nav class="tiles" aria-label="Propósitos formativos">
+    <a class="tile" data-pf="1" href="#pf1"><span class="sym">p → q</span><span><span class="tn">PF1</span><span class="tt">Lógica matemática</span></span></a>
+    <a class="tile" data-pf="2" href="#pf2"><span class="sym">• ▬ 0</span><span><span class="tn">PF2</span><span class="tt">Conteo</span></span></a>
+    <a class="tile" data-pf="3" href="#pf3"><span class="sym">−3 + 5</span><span><span class="tn">PF3</span><span class="tt">Naturales y enteros</span></span></a>
+    <a class="tile" data-pf="4" href="#pf4"><span class="sym">¾ · %</span><span><span class="tn">PF4</span><span class="tt">Fracciones y porcentajes</span></span></a>
+    <a class="tile" data-pf="5" href="#pf5"><span class="sym">x² · √x</span><span><span class="tn">PF5</span><span class="tt">Potencias y raíces</span></span></a>
+    <a class="tile" data-pf="6" href="#pf6"><span class="sym">10³ m</span><span><span class="tn">PF6</span><span class="tt">La medición</span></span></a>
+    <a class="tile" data-pf="7" href="#pf7"><span class="sym">( ) × ÷</span><span><span class="tn">PF7</span><span class="tt">Operaciones combinadas</span></span></a>
+  </nav>
 </div></header>
 
 <div class="wrap cols">
@@ -155,49 +221,49 @@ footer{border-top:2px solid var(--red);padding-block:20px 40px;color:var(--ink2)
     <h2><a href="#programa">Programa del semestre: propósitos y contenidos formativos</a></h2>
     <p>Pensamiento Matemático I trabaja el pensamiento aritmético en siete propósitos formativos. En cada uno verás qué se espera que logres y los contenidos que estudiaremos, junto con los recursos del blog que corresponden.</p>
     <div class="pf-list">
-    <section class="pf" id="pf1">
+    <section class="pf" id="pf1" data-pf="1">
       <div class="pf-h"><span class="pf-n">PF1</span><h3>Lógica matemática</h3></div>
       <p class="pf-p"><span class="lbl">Propósito formativo</span>Aplica conceptos básicos de lógica matemática en situaciones de su contexto para desarrollar esquemas de razonamiento estructurado.</p>
       <div class="lbl">Contenidos formativos</div>
       <ul class="pf-c"><li>Conceptualización de lógica matemática</li><li>Tablas de verdad</li><li>Proposiciones compuestas y operadores lógicos: conjunción (y) y disyunción (o)</li><li>Proposiciones condicionales y bicondicionales</li></ul>
       <p class="pf-l">Recursos: <a href="#video-proposiciones">Video</a> · <a href="archivos/PF1.pdf" target="_blank" rel="noopener">Presentación</a></p>
     </section>
-    <section class="pf" id="pf2">
+    <section class="pf" id="pf2" data-pf="2">
       <div class="pf-h"><span class="pf-n">PF2</span><h3>El concepto de conteo</h3></div>
       <p class="pf-p"><span class="lbl">Propósito formativo</span>Comprende el concepto de conteo a partir del análisis de los procesos sociales que llevaron a su desarrollo para aplicarlo en situaciones de interés.</p>
       <div class="lbl">Contenidos formativos</div>
       <ul class="pf-c"><li>Sistemas de conteo en Mesopotamia, Egipto, América, India y Arabia; importancia del cero en los pueblos olmeca y maya</li><li>Concepto de número y números naturales</li><li>Leonardo de Pisa y el sistema numeral indoarábigo</li><li>Concepto y uso del ábaco</li></ul>
       <p class="pf-l">Recursos: <a href="#video-conteo">Video</a> · <a href="archivos/PF2.pdf" target="_blank" rel="noopener">Presentación</a></p>
     </section>
-    <section class="pf" id="pf3">
+    <section class="pf" id="pf3" data-pf="3">
       <div class="pf-h"><span class="pf-n">PF3</span><h3>Números naturales y enteros</h3></div>
       <p class="pf-p"><span class="lbl">Propósito formativo</span>Analiza distintas situaciones cotidianas en donde intervenga el proceso de contar, para comprender la clasificación de los números y realizar operaciones básicas entre números naturales y enteros.</p>
       <div class="lbl">Contenidos formativos</div>
       <ul class="pf-c"><li>Clasificación de los números reales</li><li>Operaciones aritméticas y sus operaciones inversas con números enteros</li><li>Propiedades de las operaciones: cerradura, conmutación, asociación y distribución; neutros e inversos aditivo y multiplicativo</li><li>Factorización de números naturales (teorema fundamental de la aritmética)</li><li>Máximo común divisor y mínimo común múltiplo</li></ul>
       <p class="pf-l">Recursos: <a href="#video-naturales-enteros">Video</a> · <a href="archivos/PF3.pdf" target="_blank" rel="noopener">Presentación</a></p>
     </section>
-    <section class="pf" id="pf4">
+    <section class="pf" id="pf4" data-pf="4">
       <div class="pf-h"><span class="pf-n">PF4</span><h3>Fracciones y porcentajes</h3></div>
       <p class="pf-p"><span class="lbl">Propósito formativo</span>Comprende el concepto de unidad y la relación entre números fraccionarios y enteros, para realizar operaciones con fracciones y porcentajes.</p>
       <div class="lbl">Contenidos formativos</div>
       <ul class="pf-c"><li>Concepto de unidad y de los números racionales como fracciones (estructura)</li><li>Equivalencias entre fracciones y entre números enteros y fracciones</li><li>Simplificación de fracciones</li><li>Proporción, proporción inversa y porcentaje</li></ul>
       <p class="pf-l">Recursos: <a href="#video-fracciones">Video</a> · <a href="archivos/PF4.pdf" target="_blank" rel="noopener">Presentación</a></p>
     </section>
-    <section class="pf" id="pf5">
+    <section class="pf" id="pf5" data-pf="5">
       <div class="pf-h"><span class="pf-n">PF5</span><h3>Potencias y raíces</h3></div>
       <p class="pf-p"><span class="lbl">Propósito formativo</span>Comprende los conceptos de potenciación y radicación para realizar operaciones con exponentes y radicales.</p>
       <div class="lbl">Contenidos formativos</div>
       <ul class="pf-c"><li>Componentes de una potencia</li><li>Operaciones con potenciación y con exponentes (reglas)</li><li>Exponentes negativos como el inverso multiplicativo de la base</li><li>Definición de raíz cuadrada (sus partes) y radicando diferente de 2</li><li>Raíz cuadrada como inverso de potencias de números positivos; cancelación de potencias y raíces</li></ul>
       <p class="pf-l">Recursos: <a href="#video-potencias-raices">Video</a> · <a href="archivos/PF5.pdf" target="_blank" rel="noopener">Presentación</a></p>
     </section>
-    <section class="pf" id="pf6">
+    <section class="pf" id="pf6" data-pf="6">
       <div class="pf-h"><span class="pf-n">PF6</span><h3>La medición</h3></div>
       <p class="pf-p"><span class="lbl">Propósito formativo</span>Comprende el concepto de medición a partir del análisis de los procesos sociales que llevaron a su desarrollo para aplicarlo en situaciones de interés.</p>
       <div class="lbl">Contenidos formativos</div>
       <ul class="pf-c"><li>Concepto de medición</li><li>Unidades de medida y sistema internacional</li><li>Magnitudes y notación científica</li><li>Razón y proporción</li></ul>
       <p class="pf-l">Recursos: <a href="#video-medicion">Video</a> · <a href="archivos/PF6.pdf" target="_blank" rel="noopener">Presentación</a></p>
     </section>
-    <section class="pf" id="pf7">
+    <section class="pf" id="pf7" data-pf="7">
       <div class="pf-h"><span class="pf-n">PF7</span><h3>Operaciones combinadas</h3></div>
       <p class="pf-p"><span class="lbl">Propósito formativo</span>Aplica los elementos de la aritmética para resolver cálculos combinados con números reales.</p>
       <div class="lbl">Contenidos formativos</div>
@@ -207,8 +273,8 @@ footer{border-top:2px solid var(--red);padding-block:20px 40px;color:var(--ink2)
     </div>
   </article>
 
-  <article id="video-operaciones-combinadas" data-k="video">
-    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag">PF7</span><span class="tag">video</span></div>
+  <article id="video-operaciones-combinadas" data-k="video" data-pf="7">
+    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag pfc">PF7</span><span class="tag">video</span></div>
     <h2><a href="#video-operaciones-combinadas">Video: Operaciones combinadas</a></h2>
     <p>La jerarquía de operaciones, los signos de agrupación, la resta como suma del opuesto y ejercicios paso a paso con potencias, raíces, fracciones y decimales, hasta calcular si alcanza el agua de un tinaco.</p>
     <div class="media"><video controls preload="none" playsinline poster="archivos/Operaciones_combinadas_PM1.jpg" src="archivos/Operaciones_combinadas_PM1.mp4"></video></div>
@@ -226,8 +292,8 @@ footer{border-top:2px solid var(--red);padding-block:20px 40px;color:var(--ink2)
     </div>
   </article>
 
-  <article id="video-medicion" data-k="video">
-    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag">PF6</span><span class="tag">video</span></div>
+  <article id="video-medicion" data-k="video" data-pf="6">
+    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag pfc">PF6</span><span class="tag">video</span></div>
     <h2><a href="#video-medicion">Video: La medición</a></h2>
     <p>Qué es medir, por qué se necesitó una unidad común, el Sistema Internacional, los múltiplos y submúltiplos, la notación científica y la razón y proporción, con ejemplos de consumo de agua.</p>
     <div class="media"><video controls preload="none" playsinline poster="archivos/Medicion_PM1.jpg" src="archivos/Medicion_PM1.mp4"></video></div>
@@ -245,8 +311,8 @@ footer{border-top:2px solid var(--red);padding-block:20px 40px;color:var(--ink2)
     </div>
   </article>
 
-  <article id="video-potencias-raices" data-k="video">
-    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag">PF5</span><span class="tag">video</span></div>
+  <article id="video-potencias-raices" data-k="video" data-pf="5">
+    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag pfc">PF5</span><span class="tag">video</span></div>
     <h2><a href="#video-potencias-raices">Video: Potencias y raíces</a></h2>
     <p>Las partes de una potencia, las leyes de los exponentes, el exponente cero y los negativos, las partes de una raíz y cómo la raíz deshace la potencia, con un ejemplo de una cisterna.</p>
     <div class="media"><video controls preload="none" playsinline poster="archivos/Potencias_raices_PM1.jpg" src="archivos/Potencias_raices_PM1.mp4"></video></div>
@@ -264,8 +330,8 @@ footer{border-top:2px solid var(--red);padding-block:20px 40px;color:var(--ink2)
     </div>
   </article>
 
-  <article id="video-naturales-enteros" data-k="video">
-    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag">PF3</span><span class="tag">video</span></div>
+  <article id="video-naturales-enteros" data-k="video" data-pf="3">
+    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag pfc">PF3</span><span class="tag">video</span></div>
     <h2><a href="#video-naturales-enteros">Video: Números naturales y enteros</a></h2>
     <p>La clasificación de los números reales, la suma, resta, multiplicación y división de enteros, las propiedades de las operaciones, la factorización en primos y el MCD y el MCM con un ejemplo de tinacos y garrafas.</p>
     <div class="media"><video controls preload="none" playsinline poster="archivos/Naturales_enteros_PM1.jpg" src="archivos/Naturales_enteros_PM1.mp4"></video></div>
@@ -283,8 +349,8 @@ footer{border-top:2px solid var(--red);padding-block:20px 40px;color:var(--ink2)
     </div>
   </article>
 
-  <article id="video-conteo" data-k="video">
-    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag">PF2</span><span class="tag">video</span></div>
+  <article id="video-conteo" data-k="video" data-pf="2">
+    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag pfc">PF2</span><span class="tag">video</span></div>
     <h2><a href="#video-conteo">Video: El concepto de conteo</a></h2>
     <p>Cómo contaron Mesopotamia, Egipto, los olmecas y los mayas, cómo nació en India y Arabia el sistema que usamos hoy, quién lo llevó a Europa, la diferencia entre número y numeral, el valor posicional y el ábaco.</p>
     <div class="media"><video controls preload="none" playsinline poster="archivos/Conteo_PM1.jpg" src="archivos/Conteo_PM1.mp4"></video></div>
@@ -302,8 +368,8 @@ footer{border-top:2px solid var(--red);padding-block:20px 40px;color:var(--ink2)
     </div>
   </article>
 
-  <article id="video-fracciones" data-k="video">
-    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag">PF4</span><span class="tag">video</span></div>
+  <article id="video-fracciones" data-k="video" data-pf="4">
+    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag pfc">PF4</span><span class="tag">video</span></div>
     <h2><a href="#video-fracciones">Video: Fracciones y porcentajes</a></h2>
     <p>En casi tres minutos repasamos qué dice una fracción, cómo sacar la fracción de una cantidad, las fracciones equivalentes, las operaciones, la proporción directa e inversa, los porcentajes, los descuentos con IVA y un ejemplo con el ahorro de agua.</p>
     <div class="media"><video controls preload="none" playsinline poster="archivos/Fracciones_porcentajes_PM1.jpg" src="archivos/Fracciones_porcentajes_PM1.mp4"></video></div>
@@ -325,8 +391,8 @@ footer{border-top:2px solid var(--red);padding-block:20px 40px;color:var(--ink2)
     </div>
   </article>
 
-  <article id="video-proposiciones" data-k="video">
-    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag">PF1</span><span class="tag">video</span></div>
+  <article id="video-proposiciones" data-k="video" data-pf="1">
+    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag pfc">PF1</span><span class="tag">video</span></div>
     <h2><a href="#video-proposiciones">Video: Proposiciones lógicas</a></h2>
     <p>¿Todo lo que decimos es verdadero o falso? En este video vemos qué es una proposición, qué frases no lo son (preguntas, órdenes, opiniones y enunciados abiertos), la diferencia entre proposiciones simples y compuestas, los conectivos lógicos y cómo saber cuánto vale una proposición compuesta.</p>
     <div class="media"><video controls preload="none" playsinline poster="archivos/Proposiciones_logicas_PM1.jpg" src="archivos/Proposiciones_logicas_PM1.mp4"></video></div>
@@ -397,13 +463,13 @@ footer{border-top:2px solid var(--red);padding-block:20px 40px;color:var(--ink2)
   <div class="box next" id="ev-next"><p class="lbl">Próxima evaluación</p><p class="ev-none">Sin fechas por ahora.</p></div>
   <h2>Temas del semestre</h2>
   <ol class="pfs">
-    <li><span class="n">PF1</span><div><b>Lógica matemática</b><span>Proposiciones, operadores lógicos, tablas de verdad, condicional y bicondicional.</span><a href="#video-proposiciones">Ver video</a><a href="#pf1">Contenidos</a></div></li>
-    <li><span class="n">PF2</span><div><b>Conteo</b><span>Sistemas de conteo antiguos, el cero, números naturales y el ábaco.</span><a href="#video-conteo">Ver video</a><a href="#pf2">Contenidos</a></div></li>
-    <li><span class="n">PF3</span><div><b>Naturales y enteros</b><span>Clasificación de los números, operaciones con enteros, propiedades, MCD y MCM.</span><a href="#video-naturales-enteros">Ver video</a><a href="#pf3">Contenidos</a></div></li>
-    <li><span class="n">PF4</span><div><b>Fracciones y porcentajes</b><span>Unidad, fracciones equivalentes, simplificación, proporción y porcentaje.</span><a href="#video-fracciones">Ver video</a><a href="#pf4">Contenidos</a></div></li>
-    <li><span class="n">PF5</span><div><b>Potencias y raíces</b><span>Partes de una potencia, leyes de los exponentes y raíces.</span><a href="#video-potencias-raices">Ver video</a><a href="#pf5">Contenidos</a></div></li>
-    <li><span class="n">PF6</span><div><b>La medición</b><span>Medición, Sistema Internacional, notación científica, razón y proporción.</span><a href="#video-medicion">Ver video</a><a href="#pf6">Contenidos</a></div></li>
-    <li><span class="n">PF7</span><div><b>Operaciones combinadas</b><span>Jerarquía de operaciones, signos de agrupación y operaciones con potencias y raíces.</span><a href="#video-operaciones-combinadas">Ver video</a><a href="#pf7">Contenidos</a></div></li>
+    <li data-pf="1"><span class="n">1</span><div><b>Lógica matemática</b><span>Proposiciones, operadores lógicos, tablas de verdad, condicional y bicondicional.</span><a href="#video-proposiciones">Ver video</a><a href="#pf1">Contenidos</a></div></li>
+    <li data-pf="2"><span class="n">2</span><div><b>Conteo</b><span>Sistemas de conteo antiguos, el cero, números naturales y el ábaco.</span><a href="#video-conteo">Ver video</a><a href="#pf2">Contenidos</a></div></li>
+    <li data-pf="3"><span class="n">3</span><div><b>Naturales y enteros</b><span>Clasificación de los números, operaciones con enteros, propiedades, MCD y MCM.</span><a href="#video-naturales-enteros">Ver video</a><a href="#pf3">Contenidos</a></div></li>
+    <li data-pf="4"><span class="n">4</span><div><b>Fracciones y porcentajes</b><span>Unidad, fracciones equivalentes, simplificación, proporción y porcentaje.</span><a href="#video-fracciones">Ver video</a><a href="#pf4">Contenidos</a></div></li>
+    <li data-pf="5"><span class="n">5</span><div><b>Potencias y raíces</b><span>Partes de una potencia, leyes de los exponentes y raíces.</span><a href="#video-potencias-raices">Ver video</a><a href="#pf5">Contenidos</a></div></li>
+    <li data-pf="6"><span class="n">6</span><div><b>La medición</b><span>Medición, Sistema Internacional, notación científica, razón y proporción.</span><a href="#video-medicion">Ver video</a><a href="#pf6">Contenidos</a></div></li>
+    <li data-pf="7"><span class="n">7</span><div><b>Operaciones combinadas</b><span>Jerarquía de operaciones, signos de agrupación y operaciones con potencias y raíces.</span><a href="#video-operaciones-combinadas">Ver video</a><a href="#pf7">Contenidos</a></div></li>
   </ol>
   <div class="box"><p><b>¿Dudas?</b></p><p>Pregúntale al profesor en clase o anota tu pregunta en el cuaderno para revisarla juntos.</p></div>
 </div></aside>
