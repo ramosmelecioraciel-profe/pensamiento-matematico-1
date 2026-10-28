@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pensamiento Matemático I</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Young+Serif&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: hoja de cuaderno cuadriculado con margen rojo; columna de entradas + índice de propósitos formativos */
+:root{
+  --paper:#fbfcfe; --grid:#e3e9f4; --ink:#1b2340; --ink2:#55607e;
+  --blue:#2343b8; --blue-soft:#e6ebfb; --red:#d24a4a; --line:#d6dceb; --card:#ffffff;
+  --f-display:"Young Serif", Georgia, "Times New Roman", serif;
+  --f-body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#12172a; --grid:#1b2238; --ink:#e8ecf7; --ink2:#a3acc7;
+  --blue:#8ea6ff; --blue-soft:#1e2950; --red:#ff7b7b; --line:#2a3352; --card:#171e35; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#12172a; --grid:#1b2238; --ink:#e8ecf7; --ink2:#a3acc7;
+  --blue:#8ea6ff; --blue-soft:#1e2950; --red:#ff7b7b; --line:#2a3352; --card:#171e35; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px}
+
+header.top{padding-block:40px 28px;border-bottom:2px solid var(--red)}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:700}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(34px,6vw,58px);line-height:1.05;margin:.25em 0 .3em;text-wrap:balance}
+h1 .frac{display:inline-flex;flex-direction:column;align-items:center;font-size:.55em;vertical-align:middle;line-height:1;color:var(--blue);margin:0 .1em}
+h1 .frac i{font-style:normal;border-top:3px solid currentColor;padding-top:2px}
+.lede{max-width:62ch;color:var(--ink2);margin:0}
+.who{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px;font-size:15px}
+.who b{color:var(--ink)}
+
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:40px;padding-block:32px 64px}
+@media (max-width:860px){.cols{grid-template-columns:minmax(0,1fr)}}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.chip{font:inherit;font-size:14px;font-weight:700;border:1.5px solid var(--line);background:var(--card);color:var(--ink);padding:6px 14px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:var(--paper)}
+
+.feed{display:flex;flex-direction:column;gap:28px}
+article{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px 24px 22px 40px;position:relative;min-width:0}
+article::before{content:"";position:absolute;left:22px;top:0;bottom:0;width:2px;background:var(--red);opacity:.55}
+.meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:14px;color:var(--ink2)}
+.tag{font-family:var(--f-mono);font-size:12px;background:var(--blue-soft);color:var(--blue);padding:2px 8px;border-radius:4px}
+article h2{font-family:var(--f-display);font-weight:400;font-size:clamp(24px,3.4vw,31px);line-height:1.15;margin:.35em 0 .4em;text-wrap:balance}
+article h2 a{color:inherit;text-decoration:none}
+article h2 a:hover{text-decoration:underline;text-decoration-color:var(--red)}
+article p{margin:.6em 0;max-width:66ch}
+article h3{font-size:17px;margin:1.2em 0 .3em}
+article ul,article ol{padding-left:1.3em;margin:.4em 0;max-width:64ch}
+article li{margin:.2em 0}
+.media{margin:16px 0;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:#000}
+.media video{display:block;width:100%;height:auto;aspect-ratio:16/9}
+.cover{margin:16px 0;border:1px solid var(--line);border-radius:6px;display:block;max-width:100%;height:auto}
+.note{font-size:15px;background:var(--blue-soft);border-radius:6px;padding:10px 14px;margin:12px 0;max-width:66ch}
+.math{font-family:var(--f-mono);font-size:.92em;white-space:nowrap}
+.reto{border:1.5px dashed var(--line);border-radius:6px;padding:12px 16px;margin:14px 0}
+.reto summary{cursor:pointer;font-weight:700;color:var(--blue)}
+.reto ol{margin-top:8px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.btn{text-decoration:none;font:inherit;font-size:15px;font-weight:700;display:inline-flex;align-items:center;gap:8px;border:none;border-radius:6px;padding:9px 16px;cursor:pointer;background:var(--blue);color:var(--paper)}
+.btn.ghost{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
+.btn[disabled]{opacity:.6;cursor:progress}
+.btn small{font-weight:400;opacity:.85}
+.open{align-self:center;font-size:14px;font-weight:700;margin-right:6px}
+.dl-msg{font-size:14px;color:var(--ink2);min-height:1.2em;margin-top:6px}
+
+aside{min-width:0}
+.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);display:flex;flex-direction:column;gap:18px}
+.side h2{font-family:var(--f-display);font-weight:400;font-size:22px;margin:0}
+.pfs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.pfs li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;padding:10px 0;border-bottom:1px solid var(--line);align-items:start}
+.pfs .n{font-family:var(--f-mono);font-size:13px;color:var(--red);padding-top:3px}
+.pfs b{display:block;font-size:15px;line-height:1.3}
+.pfs span{font-size:13px;color:var(--ink2);line-height:1.35;display:block}
+.pfs a{font-size:13px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 16px;font-size:15px}
+.box p{margin:.3em 0}
+footer{border-top:2px solid var(--red);padding-block:20px 40px;color:var(--ink2);font-size:14px}
+@media (max-width:480px){article{padding:20px 16px 18px 30px}article::before{left:14px}}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="eyebrow">Preparatoria Oficial Núm. 252 · Primer semestre</div>
+  <h1>Pensamiento Matemático&nbsp;<span style="color:var(--blue)">I</span></h1>
+  <p class="lede">Videos, presentaciones y cuadernillos de la clase para repasar en casa. Cada entrada corresponde a un propósito formativo del programa.</p>
+  <div class="who"><span>Docente: <b>Raciel Ramos Melecio</b></span><span>Asignatura: <b>Pensamiento Matemático I</b></span></div>
+</div></header>
+
+<div class="wrap cols">
+<main>
+  <div class="filters" role="group" aria-label="Filtrar entradas">
+    <button class="chip" id="f-all" data-f="all" aria-pressed="true">Todas</button>
+    <button class="chip" id="f-video" data-f="video" aria-pressed="false">Videos</button>
+    <button class="chip" id="f-cuad" data-f="cuadernillo" aria-pressed="false">Cuadernillos</button>
+    <button class="chip" id="f-pres" data-f="presentacion" aria-pressed="false">Presentaciones</button>
+  </div>
+
+  <div class="feed">
+
+  <article id="video-fracciones" data-k="video">
+    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag">PF4</span><span class="tag">video</span></div>
+    <h2><a href="#video-fracciones">Video: Fracciones y porcentajes</a></h2>
+    <p>En casi tres minutos repasamos qué dice una fracción, cómo sacar la fracción de una cantidad, las fracciones equivalentes, las operaciones, la proporción directa e inversa, los porcentajes, los descuentos con IVA y un ejemplo con el ahorro de agua.</p>
+    <div class="media"><video controls preload="none" playsinline poster="archivos/Fracciones_porcentajes_PM1.jpg" src="archivos/Fracciones_porcentajes_PM1.mp4"></video></div>
+    <p class="note">El video todavía no tiene narración. Míralo con tu cuaderno abierto y resuelve cada ejemplo antes de que aparezca el resultado.</p>
+    <details class="reto"><summary>Reto rápido (aparece en el minuto 1:12)</summary>
+      <ol><li><span class="math">1/4</span> de 40 = ?</li><li>¿<span class="math">2/4</span> es igual a <span class="math">1/2</span>?</li><li><span class="math">2/5 + 1/5</span> = ?</li><li>Simplifica <span class="math">6/9</span>.</li></ol>
+      <p>Respuestas: 10 · sí · <span class="math">3/5</span> · <span class="math">2/3</span></p>
+    </details>
+    <h3>Para recordar</h3>
+    <ul>
+      <li>Para sumar fracciones necesitas el mismo denominador: <span class="math">1/2 + 1/3 = 5/6</span>, no <span class="math">2/5</span>.</li>
+      <li>Porcentaje significa “de cada cien”: el 20 % de 150 es <span class="math">150 × 0.20 = 30</span>.</li>
+      <li>Dos descuentos seguidos no se suman: 30 % y luego 20 % equivalen a un 44 % en total.</li>
+    </ul>
+    <p>Tarea: resuelve las Fichas 4.1 a 4.5 de tu cuadernillo.</p>
+    <div class="actions">
+      <a class="btn dl" href="archivos/Fracciones_porcentajes_PM1.mp4" download="Video_Fracciones_y_porcentajes.mp4">Descargar video <small>5 MB</small></a>
+      <a class="btn ghost dl" href="archivos/PF4.pdf" download="Presentacion_PF4_Fracciones_y_porcentajes.pdf">Presentación PF4 <small>PDF</small></a>
+    </div>
+  </article>
+
+  <article id="video-proposiciones" data-k="video">
+    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag">PF1</span><span class="tag">video</span></div>
+    <h2><a href="#video-proposiciones">Video: Proposiciones lógicas</a></h2>
+    <p>¿Todo lo que decimos es verdadero o falso? En este video vemos qué es una proposición, qué frases no lo son (preguntas, órdenes, opiniones y enunciados abiertos), la diferencia entre proposiciones simples y compuestas, los conectivos lógicos y cómo saber cuánto vale una proposición compuesta.</p>
+    <div class="media"><video controls preload="none" playsinline poster="archivos/Proposiciones_logicas_PM1.jpg" src="archivos/Proposiciones_logicas_PM1.mp4"></video></div>
+    <p class="note">El video todavía no tiene narración. En el reto rápido, pausa en cada frase y decide si es proposición antes de ver la respuesta.</p>
+    <h3>Los conectivos</h3>
+    <ul>
+      <li><span class="math">¬p</span> negación: “no p”</li>
+      <li><span class="math">p ∧ q</span> conjunción: “p y q”, verdadera solo si las dos lo son</li>
+      <li><span class="math">p ∨ q</span> disyunción: “p o q”, basta con que una sea verdadera</li>
+      <li><span class="math">p → q</span> condicional: “si p, entonces q”, falsa solo cuando p es V y q es F</li>
+      <li><span class="math">p ↔ q</span> bicondicional: “p si y solo si q”</li>
+    </ul>
+    <p>Tarea: resuelve la Ficha 1.1 de tu cuadernillo.</p>
+    <div class="actions">
+      <a class="btn dl" href="archivos/Proposiciones_logicas_PM1.mp4" download="Video_Proposiciones_logicas.mp4">Descargar video <small>4.5 MB</small></a>
+      <a class="btn ghost dl" href="archivos/PF1.pdf" download="Presentacion_PF1_Logica_matematica.pdf">Presentación PF1 <small>PDF</small></a>
+    </div>
+  </article>
+
+  <article id="cuadernillo-paso-a-paso" data-k="cuadernillo">
+    <div class="meta"><time datetime="2026-10-21">21 de octubre de 2026</time><span class="tag">PF1–PF7</span><span class="tag">cuadernillo</span></div>
+    <h2><a href="#cuadernillo-paso-a-paso">Cuadernillo paso a paso</a></h2>
+    <p>Una versión del cuadernillo con instrucciones cortas, un ejercicio por bloque, ejemplos resueltos antes de cada práctica y casillas para marcar tu avance. Sirve para quien prefiere ir más despacio o repasar un tema desde el principio.</p>
+    <img class="cover" src="archivos/cov_paso.jpg" alt="Portada del cuadernillo paso a paso" width="660" height="510" loading="lazy">
+    <div class="actions"><a class="btn dl" href="archivos/Cuadernillo_Paso_a_Paso_PM1.pdf" download="Cuadernillo_Paso_a_Paso_PM1.pdf">Descargar PDF <small>7 MB · 45 páginas</small></a></div>
+  </article>
+
+  <article id="presentaciones" data-k="presentacion">
+    <div class="meta"><time datetime="2026-10-20">20 de octubre de 2026</time><span class="tag">PF1–PF7</span><span class="tag">presentaciones</span></div>
+    <h2><a href="#presentaciones">Las presentaciones de los siete propósitos formativos</a></h2>
+    <p>Son las mismas diapositivas que vemos en clase. Cada una trae los logros del tema, para qué sirve, ejemplos resueltos, una dinámica y ejercicios de práctica. Vienen en PDF, así que se abren en cualquier celular o computadora.</p>
+    <div class="actions">
+      <a class="btn ghost dl" href="archivos/PF1.pdf" download="Presentacion_PF1_Logica_matematica.pdf">PF1 Lógica</a>
+      <a class="btn ghost dl" href="archivos/PF2.pdf" download="Presentacion_PF2_Conteo.pdf">PF2 Conteo</a>
+      <a class="btn ghost dl" href="archivos/PF3.pdf" download="Presentacion_PF3_Naturales_y_enteros.pdf">PF3 Naturales y enteros</a>
+      <a class="btn ghost dl" href="archivos/PF4.pdf" download="Presentacion_PF4_Fracciones_y_porcentajes.pdf">PF4 Fracciones</a>
+      <a class="btn ghost dl" href="archivos/PF5.pdf" download="Presentacion_PF5_Potencias_y_raices.pdf">PF5 Potencias</a>
+      <a class="btn ghost dl" href="archivos/PF6.pdf" download="Presentacion_PF6_La_medicion.pdf">PF6 Medición</a>
+      <a class="btn ghost dl" href="archivos/PF7.pdf" download="Presentacion_PF7_Operaciones_combinadas.pdf">PF7 Operaciones</a>
+    </div>
+  </article>
+
+  <article id="cuadernillo" data-k="cuadernillo">
+    <div class="meta"><time datetime="2026-10-17">17 de octubre de 2026</time><span class="tag">PF1–PF7</span><span class="tag">cuadernillo</span></div>
+    <h2><a href="#cuadernillo">Cuadernillo de ejercicios de Pensamiento Matemático I</a></h2>
+    <p>El cuadernillo de trabajo del semestre. Empieza con un arranque dinámico y tiene una dinámica por cada propósito formativo, con fichas de ejercicios y material recortable para trabajar en equipo.</p>
+    <img class="cover" src="archivos/cov_cuad.jpg" alt="Portada del cuadernillo de ejercicios" width="660" height="510" loading="lazy">
+    <p>Si no puedes imprimirlo, copia los ejercicios en tu cuaderno y resuélvelos ahí.</p>
+    <div class="actions"><a class="btn dl" href="archivos/Cuadernillo_PM1.pdf" download="Cuadernillo_Pensamiento_Matematico_I.pdf">Descargar PDF <small>11 MB</small></a></div>
+  </article>
+
+  <article id="bienvenida" data-k="aviso">
+    <div class="meta"><time datetime="2026-10-17">17 de octubre de 2026</time><span class="tag">aviso</span></div>
+    <h2><a href="#bienvenida">Bienvenidos al cuaderno de la clase</a></h2>
+    <p>Aquí voy a subir lo que usamos en Pensamiento Matemático I: videos para repasar, las presentaciones de clase y los cuadernillos. Las entradas más nuevas aparecen arriba.</p>
+    <h3>Cómo usarlo</h3>
+    <ol>
+      <li>Busca el propósito formativo que estamos viendo en la lista de temas.</li>
+      <li>Mira el video o la presentación antes de resolver las fichas.</li>
+      <li>Si una explicación no te queda clara, anota tu duda y tráela a la siguiente clase.</li>
+    </ol>
+  </article>
+
+  </div>
+</main>
+
+<aside><div class="side">
+  <h2>Temas del semestre</h2>
+  <ol class="pfs">
+    <li><span class="n">PF1</span><div><b>Lógica matemática</b><span>Proposiciones, conectivos y tablas de verdad para razonar con orden.</span><a href="#video-proposiciones">Ver video</a></div></li>
+    <li><span class="n">PF2</span><div><b>Conteo</b><span>Cómo surgió el contar y cómo usarlo en situaciones de interés.</span></div></li>
+    <li><span class="n">PF3</span><div><b>Naturales y enteros</b><span>Clasificación de los números y operaciones con naturales y enteros.</span></div></li>
+    <li><span class="n">PF4</span><div><b>Fracciones y porcentajes</b><span>La unidad, fracciones equivalentes, operaciones y porcentajes.</span><a href="#video-fracciones">Ver video</a></div></li>
+    <li><span class="n">PF5</span><div><b>Potencias y raíces</b><span>Leyes de los exponentes y operaciones con radicales.</span></div></li>
+    <li><span class="n">PF6</span><div><b>La medición</b><span>Unidades, conversiones y cómo se desarrolló la medición.</span></div></li>
+    <li><span class="n">PF7</span><div><b>Operaciones combinadas</b><span>Jerarquía de operaciones con números reales.</span></div></li>
+  </ol>
+  <div class="box"><p><b>¿Dudas?</b></p><p>Pregúntale al profesor en clase o anota tu pregunta en el cuaderno para revisarla juntos.</p></div>
+</div></aside>
+</div>
+
+<footer><div class="wrap">Pensamiento Matemático I · Preparatoria Oficial Núm. 252 · Prof. Raciel Ramos Melecio</div></footer>
+
+<script>
+(function(){
+  // Filtros
+  const chips=[...document.querySelectorAll('.chip')], posts=[...document.querySelectorAll('article')];
+  chips.forEach(c=>c.addEventListener('click',()=>{
+    chips.forEach(x=>x.setAttribute('aria-pressed',x===c?'true':'false'));
+    const f=c.dataset.f; posts.forEach(p=>{p.hidden=!(f==='all'||p.dataset.k===f)});
+  }));
+})();
+</script>
+
+</body>
+</html>
