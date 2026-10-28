@@ -75,6 +75,17 @@ article li{margin:.2em 0}
 .open{align-self:center;font-size:14px;font-weight:700;margin-right:6px}
 .dl-msg{font-size:14px;color:var(--ink2);min-height:1.2em;margin-top:6px}
 
+
+.pf-list{display:flex;flex-direction:column;gap:0;margin-top:14px;border-top:1px solid var(--line)}
+.pf{padding-block:16px;border-bottom:1px solid var(--line);scroll-margin-top:16px}
+.pf-h{display:flex;align-items:baseline;gap:12px}
+.pf-h h3{font-family:var(--f-display);font-weight:400;font-size:21px;margin:0}
+.pf-n{font-family:var(--f-mono);font-size:13px;color:var(--red)}
+.lbl{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--ink2);margin-bottom:2px}
+.pf-p{margin:.5em 0 .7em;max-width:66ch;font-style:italic}
+.pf-p .lbl{font-style:normal}
+.pf-c{margin:.2em 0 .5em}
+.pf-l{margin:.3em 0 0;font-size:15px}
 aside{min-width:0}
 .side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);display:flex;flex-direction:column;gap:18px}
 .side h2{font-family:var(--f-display);font-weight:400;font-size:22px;margin:0}
@@ -83,7 +94,7 @@ aside{min-width:0}
 .pfs .n{font-family:var(--f-mono);font-size:13px;color:var(--red);padding-top:3px}
 .pfs b{display:block;font-size:15px;line-height:1.3}
 .pfs span{font-size:13px;color:var(--ink2);line-height:1.35;display:block}
-.pfs a{font-size:13px}
+.pfs a{font-size:13px;margin-right:10px}
 .box{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 16px;font-size:15px}
 .box p{margin:.3em 0}
 footer{border-top:2px solid var(--red);padding-block:20px 40px;color:var(--ink2);font-size:14px}
@@ -106,9 +117,67 @@ footer{border-top:2px solid var(--red);padding-block:20px 40px;color:var(--ink2)
     <button class="chip" id="f-video" data-f="video" aria-pressed="false">Videos</button>
     <button class="chip" id="f-cuad" data-f="cuadernillo" aria-pressed="false">Cuadernillos</button>
     <button class="chip" id="f-pres" data-f="presentacion" aria-pressed="false">Presentaciones</button>
+    <button class="chip" id="f-prog" data-f="programa" aria-pressed="false">Programa</button>
   </div>
 
   <div class="feed">
+
+  <article id="programa" data-k="programa">
+    <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag">PF1–PF7</span><span class="tag">programa</span></div>
+    <h2><a href="#programa">Programa del semestre: propósitos y contenidos formativos</a></h2>
+    <p>Pensamiento Matemático I trabaja el pensamiento aritmético en siete propósitos formativos. En cada uno verás qué se espera que logres y los contenidos que estudiaremos, junto con los recursos del blog que corresponden.</p>
+    <div class="pf-list">
+    <section class="pf" id="pf1">
+      <div class="pf-h"><span class="pf-n">PF1</span><h3>Lógica matemática</h3></div>
+      <p class="pf-p"><span class="lbl">Propósito formativo</span>Aplica conceptos básicos de lógica matemática en situaciones de su contexto para desarrollar esquemas de razonamiento estructurado.</p>
+      <div class="lbl">Contenidos formativos</div>
+      <ul class="pf-c"><li>Conceptualización de lógica matemática</li><li>Tablas de verdad</li><li>Proposiciones compuestas y operadores lógicos: conjunción (y) y disyunción (o)</li><li>Proposiciones condicionales y bicondicionales</li></ul>
+      <p class="pf-l">Recursos: <a href="#video-proposiciones">Video</a> · <a href="archivos/PF1.pdf" target="_blank" rel="noopener">Presentación</a></p>
+    </section>
+    <section class="pf" id="pf2">
+      <div class="pf-h"><span class="pf-n">PF2</span><h3>El concepto de conteo</h3></div>
+      <p class="pf-p"><span class="lbl">Propósito formativo</span>Comprende el concepto de conteo a partir del análisis de los procesos sociales que llevaron a su desarrollo para aplicarlo en situaciones de interés.</p>
+      <div class="lbl">Contenidos formativos</div>
+      <ul class="pf-c"><li>Sistemas de conteo en Mesopotamia, Egipto, América, India y Arabia; importancia del cero en los pueblos olmeca y maya</li><li>Concepto de número y números naturales</li><li>Leonardo de Pisa y el sistema numeral indoarábigo</li><li>Concepto y uso del ábaco</li></ul>
+      <p class="pf-l">Recursos: <a href="archivos/PF2.pdf" target="_blank" rel="noopener">Presentación</a></p>
+    </section>
+    <section class="pf" id="pf3">
+      <div class="pf-h"><span class="pf-n">PF3</span><h3>Números naturales y enteros</h3></div>
+      <p class="pf-p"><span class="lbl">Propósito formativo</span>Analiza distintas situaciones cotidianas en donde intervenga el proceso de contar, para comprender la clasificación de los números y realizar operaciones básicas entre números naturales y enteros.</p>
+      <div class="lbl">Contenidos formativos</div>
+      <ul class="pf-c"><li>Clasificación de los números reales</li><li>Operaciones aritméticas y sus operaciones inversas con números enteros</li><li>Propiedades de las operaciones: cerradura, conmutación, asociación y distribución; neutros e inversos aditivo y multiplicativo</li><li>Factorización de números naturales (teorema fundamental de la aritmética)</li><li>Máximo común divisor y mínimo común múltiplo</li></ul>
+      <p class="pf-l">Recursos: <a href="archivos/PF3.pdf" target="_blank" rel="noopener">Presentación</a></p>
+    </section>
+    <section class="pf" id="pf4">
+      <div class="pf-h"><span class="pf-n">PF4</span><h3>Fracciones y porcentajes</h3></div>
+      <p class="pf-p"><span class="lbl">Propósito formativo</span>Comprende el concepto de unidad y la relación entre números fraccionarios y enteros, para realizar operaciones con fracciones y porcentajes.</p>
+      <div class="lbl">Contenidos formativos</div>
+      <ul class="pf-c"><li>Concepto de unidad y de los números racionales como fracciones (estructura)</li><li>Equivalencias entre fracciones y entre números enteros y fracciones</li><li>Simplificación de fracciones</li><li>Proporción, proporción inversa y porcentaje</li></ul>
+      <p class="pf-l">Recursos: <a href="#video-fracciones">Video</a> · <a href="archivos/PF4.pdf" target="_blank" rel="noopener">Presentación</a></p>
+    </section>
+    <section class="pf" id="pf5">
+      <div class="pf-h"><span class="pf-n">PF5</span><h3>Potencias y raíces</h3></div>
+      <p class="pf-p"><span class="lbl">Propósito formativo</span>Comprende los conceptos de potenciación y radicación para realizar operaciones con exponentes y radicales.</p>
+      <div class="lbl">Contenidos formativos</div>
+      <ul class="pf-c"><li>Componentes de una potencia</li><li>Operaciones con potenciación y con exponentes (reglas)</li><li>Exponentes negativos como el inverso multiplicativo de la base</li><li>Definición de raíz cuadrada (sus partes) y radicando diferente de 2</li><li>Raíz cuadrada como inverso de potencias de números positivos; cancelación de potencias y raíces</li></ul>
+      <p class="pf-l">Recursos: <a href="archivos/PF5.pdf" target="_blank" rel="noopener">Presentación</a></p>
+    </section>
+    <section class="pf" id="pf6">
+      <div class="pf-h"><span class="pf-n">PF6</span><h3>La medición</h3></div>
+      <p class="pf-p"><span class="lbl">Propósito formativo</span>Comprende el concepto de medición a partir del análisis de los procesos sociales que llevaron a su desarrollo para aplicarlo en situaciones de interés.</p>
+      <div class="lbl">Contenidos formativos</div>
+      <ul class="pf-c"><li>Concepto de medición</li><li>Unidades de medida y sistema internacional</li><li>Magnitudes y notación científica</li><li>Razón y proporción</li></ul>
+      <p class="pf-l">Recursos: <a href="archivos/PF6.pdf" target="_blank" rel="noopener">Presentación</a></p>
+    </section>
+    <section class="pf" id="pf7">
+      <div class="pf-h"><span class="pf-n">PF7</span><h3>Operaciones combinadas</h3></div>
+      <p class="pf-p"><span class="lbl">Propósito formativo</span>Aplica los elementos de la aritmética para resolver cálculos combinados con números reales.</p>
+      <div class="lbl">Contenidos formativos</div>
+      <ul class="pf-c"><li>Técnicas para la resolución de operaciones combinadas (jerarquía de operaciones)</li><li>Uso de símbolos para resolución de operaciones combinadas (paréntesis, corchetes, llaves y puntos)</li><li>Resolución de restas de números enteros como la suma con el opuesto de otro</li><li>Operaciones combinadas con adición, sustracción, multiplicación, división, potencias y raíces</li></ul>
+      <p class="pf-l">Recursos: <a href="archivos/PF7.pdf" target="_blank" rel="noopener">Presentación</a></p>
+    </section>
+    </div>
+  </article>
 
   <article id="video-fracciones" data-k="video">
     <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag">PF4</span><span class="tag">video</span></div>
@@ -204,13 +273,13 @@ footer{border-top:2px solid var(--red);padding-block:20px 40px;color:var(--ink2)
 <aside><div class="side">
   <h2>Temas del semestre</h2>
   <ol class="pfs">
-    <li><span class="n">PF1</span><div><b>Lógica matemática</b><span>Proposiciones, conectivos y tablas de verdad para razonar con orden.</span><a href="#video-proposiciones">Ver video</a></div></li>
-    <li><span class="n">PF2</span><div><b>Conteo</b><span>Cómo surgió el contar y cómo usarlo en situaciones de interés.</span></div></li>
-    <li><span class="n">PF3</span><div><b>Naturales y enteros</b><span>Clasificación de los números y operaciones con naturales y enteros.</span></div></li>
-    <li><span class="n">PF4</span><div><b>Fracciones y porcentajes</b><span>La unidad, fracciones equivalentes, operaciones y porcentajes.</span><a href="#video-fracciones">Ver video</a></div></li>
-    <li><span class="n">PF5</span><div><b>Potencias y raíces</b><span>Leyes de los exponentes y operaciones con radicales.</span></div></li>
-    <li><span class="n">PF6</span><div><b>La medición</b><span>Unidades, conversiones y cómo se desarrolló la medición.</span></div></li>
-    <li><span class="n">PF7</span><div><b>Operaciones combinadas</b><span>Jerarquía de operaciones con números reales.</span></div></li>
+    <li><span class="n">PF1</span><div><b>Lógica matemática</b><span>Proposiciones, operadores lógicos, tablas de verdad, condicional y bicondicional.</span><a href="#video-proposiciones">Ver video</a><a href="#pf1">Contenidos</a></div></li>
+    <li><span class="n">PF2</span><div><b>Conteo</b><span>Sistemas de conteo antiguos, el cero, números naturales y el ábaco.</span><a href="#pf2">Contenidos</a></div></li>
+    <li><span class="n">PF3</span><div><b>Naturales y enteros</b><span>Clasificación de los números, operaciones con enteros, propiedades, MCD y MCM.</span><a href="#pf3">Contenidos</a></div></li>
+    <li><span class="n">PF4</span><div><b>Fracciones y porcentajes</b><span>Unidad, fracciones equivalentes, simplificación, proporción y porcentaje.</span><a href="#video-fracciones">Ver video</a><a href="#pf4">Contenidos</a></div></li>
+    <li><span class="n">PF5</span><div><b>Potencias y raíces</b><span>Partes de una potencia, leyes de los exponentes y raíces.</span><a href="#pf5">Contenidos</a></div></li>
+    <li><span class="n">PF6</span><div><b>La medición</b><span>Medición, Sistema Internacional, notación científica, razón y proporción.</span><a href="#pf6">Contenidos</a></div></li>
+    <li><span class="n">PF7</span><div><b>Operaciones combinadas</b><span>Jerarquía de operaciones, signos de agrupación y operaciones con potencias y raíces.</span><a href="#pf7">Contenidos</a></div></li>
   </ol>
   <div class="box"><p><b>¿Dudas?</b></p><p>Pregúntale al profesor en clase o anota tu pregunta en el cuaderno para revisarla juntos.</p></div>
 </div></aside>
