@@ -215,6 +215,11 @@ body.gated{overflow:hidden}
 .qchip.locked{opacity:.55;cursor:not-allowed;border-style:dashed}
 .qchip .lk{font-size:12px;font-weight:700;margin-left:4px}
 .qchip:disabled{cursor:not-allowed}
+
+.tema-badge{font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.tema-badge.visto{background:#dff3e6;color:#14532d}
+.tema-badge.prox{background:var(--chalk);color:#1b2340}
+.pfs .tema-badge{display:inline-block;margin:2px 0 4px}
 </style>
 </head>
 <body>
@@ -756,6 +761,34 @@ body.gated{overflow:hidden}
   window.addEventListener('hashchange',porHash);
   chips.forEach(c=>{c.disabled=true;});
   fetch('avance.json',{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({})).then(aplicar);
+})();
+</script>
+
+<script>
+// TEMAS-ESTADO: marca cada propósito como visto o próximo según avance.json
+(function(){
+  const MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const d=new Date(), hoy=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  function badge(v){
+    if(v==='visto') return ['visto','✓ Tema visto'];
+    if(typeof v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v)){
+      if(v<=hoy) return ['visto','✓ Tema visto'];
+      const p=v.split('-'); return ['prox','Próximo tema · '+(+p[2])+' de '+MESES[+p[1]-1]];
+    }
+    if(v==='proximo') return ['prox','Próximo tema'];
+    return null;
+  }
+  fetch('avance.json',{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({})).then(av=>{
+    const t=av.temas||{};
+    Object.keys(t).forEach(k=>{
+      const b=badge(t[k]); if(!b) return;
+      const n=k.replace(/\D/g,'');
+      const html='<span class="tema-badge '+b[0]+'">'+b[1]+'</span>';
+      document.querySelectorAll('article[data-pf="'+n+'"][data-k="video"] .meta').forEach(m=>m.insertAdjacentHTML('beforeend',html));
+      document.querySelectorAll('.pfs li[data-pf="'+n+'"] b').forEach(x=>x.insertAdjacentHTML('afterend',html));
+      document.querySelectorAll('section.pf[data-pf="'+n+'"] .pf-h').forEach(x=>x.insertAdjacentHTML('beforeend',html));
+    });
+  });
 })();
 </script>
 </body>

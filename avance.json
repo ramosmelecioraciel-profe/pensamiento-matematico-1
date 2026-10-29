@@ -5,5 +5,14 @@
   "pf4": null,
   "pf5": null,
   "pf6": null,
-  "pf7": null
+  "pf7": null,
+  "temas": {
+    "pf1": "visto",
+    "pf2": "visto",
+    "pf3": "visto",
+    "pf4": "proximo",
+    "pf5": "proximo",
+    "pf6": "proximo",
+    "pf7": "proximo"
+  }
 }
