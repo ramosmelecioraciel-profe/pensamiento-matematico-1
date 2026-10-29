@@ -260,6 +260,37 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
 .tab-intro{margin:-8px 0 18px;color:var(--ink2);font-size:15px}
 @media (max-width:480px){.tabs{flex-wrap:wrap;gap:4px;overflow:visible}.tab{font-size:14px;padding:7px 11px}}
 .reg-hint{font-weight:400;font-size:13px;color:var(--ink2);line-height:1.4}
+
+.psubs{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px}
+.psub{font:inherit;font-size:14px;font-weight:700;border:1.5px solid var(--line);background:var(--paper);color:var(--ink2);border-radius:8px;padding:6px 12px;cursor:pointer}
+.psub[aria-pressed="true"]{border-color:var(--c,var(--board));color:var(--ink);background:var(--card);box-shadow:inset 0 -3px 0 var(--c,var(--board))}
+.psub.only{cursor:default}
+.prac{border-top:1px solid var(--line);padding-top:12px}
+.pcount{font-size:13px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:.05em}
+.pq{font-size:19px;margin:10px 0 14px;line-height:1.5}
+.pq .big{font-family:var(--f-mono);font-size:30px;font-weight:700;color:var(--ink);white-space:nowrap}
+.pq .hint,.prac .hint{font-size:14px;color:var(--ink2)}
+.pform{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pin{font:inherit;font-family:var(--f-mono);font-size:22px;width:180px;max-width:100%;padding:8px 12px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.pin::placeholder{font-family:var(--f-body);font-size:16px}
+.pin:focus-visible{outline:3px solid var(--c,var(--board));outline-offset:1px}
+.pkeys{display:flex;gap:6px}
+.pkeys button{font:inherit;font-family:var(--f-mono);font-size:20px;font-weight:700;width:44px;height:44px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.prac .btn{background:var(--c,var(--board));color:#fff;font-size:16px;padding:10px 18px}
+.pvf{display:flex;flex-wrap:wrap;gap:10px}
+.pvf .btn{min-width:150px;justify-content:center}
+.pfb{margin-top:14px;font-size:16px;line-height:1.5;border-radius:10px}
+.pfb:empty{display:none}
+.pfb.ok{background:#dff3e6;color:#14532d;padding:12px 14px}
+.pfb.bad{background:#fde2e2;color:#7f1d1d;padding:12px 14px}
+.pfb.err{color:var(--red);font-weight:700}
+.pfb .qbar{margin-top:10px}
+.pfin{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:12px;padding-top:12px;border-top:1px solid rgba(0,0,0,.12)}
+.pfin .qmsg{color:inherit}
+.mayan{display:inline-flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;vertical-align:middle;margin-left:12px;padding:10px 14px;background:var(--board);border-radius:10px}
+.mayan .md{display:flex;gap:6px}
+.mayan .md i{width:14px;height:14px;border-radius:50%;background:var(--chalk)}
+.mayan .mb{width:80px;height:12px;border-radius:6px;background:var(--chalk)}
 </style>
 </head>
 <body>
@@ -307,7 +338,7 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
 <p class="whoami" id="whoami" hidden>Entraste como <b id="whoami-n"></b> · <button type="button" id="whoami-x">No soy yo</button></p>
 <div class="wrap cols">
 <main>
-  <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones"><button type="button" role="tab" class="tab" id="tab-videos" data-tab="videos" aria-selected="false">Videos</button><button type="button" role="tab" class="tab" id="tab-autoeval" data-tab="autoeval" aria-selected="false">Autoevaluación</button><button type="button" role="tab" class="tab" id="tab-fechas" data-tab="fechas" aria-selected="false">Fechas</button><button type="button" role="tab" class="tab" id="tab-programa" data-tab="programa" aria-selected="false">Programa</button><button type="button" role="tab" class="tab" id="tab-materiales" data-tab="materiales" aria-selected="false">Materiales</button></nav>
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones"><button type="button" role="tab" class="tab" id="tab-videos" data-tab="videos" aria-selected="false">Videos</button><button type="button" role="tab" class="tab" id="tab-autoeval" data-tab="autoeval" aria-selected="false">Autoevaluación</button><button type="button" role="tab" class="tab" id="tab-practica" data-tab="practica" aria-selected="false">Práctica</button><button type="button" role="tab" class="tab" id="tab-fechas" data-tab="fechas" aria-selected="false">Fechas</button><button type="button" role="tab" class="tab" id="tab-programa" data-tab="programa" aria-selected="false">Programa</button><button type="button" role="tab" class="tab" id="tab-materiales" data-tab="materiales" aria-selected="false">Materiales</button></nav>
 
   <div class="feed">
   <article id="avisos" data-k="evaluacion" class="pinned">
@@ -347,6 +378,15 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
   </article>
 
   
+  <article id="practica" data-k="practica">
+    <div class="meta"><span class="tag">ejercicios sin límite</span><span class="tag">práctica</span></div>
+    <h2><a href="#practica">Práctica sin límite</a></h2>
+    <p>Elige un tema y resuelve rondas de 10 ejercicios. Cada ejercicio es nuevo, se revisa al momento y te explica cómo se resuelve. Practica todas las veces que quieras.</p>
+    <div class="qchips" id="prac-temas" role="group" aria-label="Elegir tema"></div>
+    <div class="psubs" id="prac-sub"></div>
+    <div id="prac" class="prac"><div id="prac-area"><p class="ev-empty">Elige un tema para empezar.</p></div></div>
+  </article>
+
   <article id="autoevaluacion" data-k="autoeval">
     <div class="meta"><span class="tag">5 preguntas</span><span class="tag">autoevaluación</span></div>
     <h2><a href="#autoevaluacion">Autoevaluaciones</a></h2>
@@ -911,7 +951,7 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
 
 <script>
 (function(){
-  const MAP={"video": "videos", "autoeval": "autoeval", "evaluacion": "fechas", "calendario": "fechas", "programa": "programa", "cuadernillo": "materiales", "presentacion": "materiales", "aviso": "materiales"}, INTRO={"videos": "Un video por propósito formativo, en orden. Las etiquetas indican si el tema ya se vio o cuándo se verá en clase.", "autoeval": "Contesta 5 preguntas del tema que acabamos de ver. Se abren conforme avanzamos en clase.", "fechas": "Días sin clases, fechas de evaluación y registro para recibir recordatorios por correo.", "programa": "Propósitos y contenidos formativos del programa de Pensamiento Matemático I.", "materiales": "Cuadernillos y presentaciones para descargar."};
+  const MAP={"video": "videos", "autoeval": "autoeval", "practica": "practica", "evaluacion": "fechas", "calendario": "fechas", "programa": "programa", "cuadernillo": "materiales", "presentacion": "materiales", "aviso": "materiales"}, INTRO={"videos": "Un video por propósito formativo, en orden. Las etiquetas indican si el tema ya se vio o cuándo se verá en clase.", "practica": "Ejercicios nuevos cada vez, con revisión al momento. Practica cualquier tema las veces que quieras.", "autoeval": "Contesta 5 preguntas del tema que acabamos de ver. Se abren conforme avanzamos en clase.", "fechas": "Días sin clases, fechas de evaluación y registro para recibir recordatorios por correo.", "programa": "Propósitos y contenidos formativos del programa de Pensamiento Matemático I.", "materiales": "Cuadernillos y presentaciones para descargar."};
   const tabs=[...document.querySelectorAll('.tab')], feed=document.querySelector('.feed');
   const arts=[...feed.querySelectorAll(':scope > article')];
   arts.forEach(a=>{ a.dataset.tab=MAP[a.dataset.k]||tabs[0].dataset.tab; });
@@ -938,6 +978,182 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
   window.addEventListener('hashchange',route);
   route();
 })();
+</script>
+<script>
+(function(){
+  const URL='https://script.google.com/macros/s/AKfycbwHqdoeheOWDYq9cho9NqCHgZV3_IqR1XM55QhPgdY1jZ782HI7Cm27zMWuopqCCfnC5w/exec', ASIG='PM1', KEY='alumno_pm252';
+  // ---------- utilidades ----------
+  const R=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+  const pick=a=>a[Math.floor(Math.random()*a.length)];
+  const gcd=(a,b)=>{a=Math.abs(a);b=Math.abs(b);while(b){[a,b]=[b,a%b];}return a||1;};
+  const lcm=(a,b)=>Math.abs(a*b)/gcd(a,b);
+  const M=n=>String(n).replace('-','−');                 // signo menos tipográfico
+  const P=n=>n<0?'('+M(n)+')':String(n);                  // negativo entre paréntesis
+  const fr=(n,d)=>{if(d<0){n=-n;d=-d;}const g=gcd(n,d);return [n/g,d/g];};
+  const frs=(n,d)=>{const [a,b]=fr(n,d);return b===1?M(a):M(a)+'/'+b;};
+  const fmt=x=>{const s=(Math.round(x*1e9)/1e9).toString();return s.includes('e')?x.toFixed(10).replace(/0+$/,''):s;};
+  const SUP={'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹','-':'⁻'};
+  const sup=n=>String(n).split('').map(c=>SUP[c]||c).join('');
+  const miles=n=>{const [e,d]=String(n).split('.');return e.replace(/\B(?=(\d{3})+(?!\d))/g,' ')+(d?'.'+d:'');};
+  // respuesta del alumno -> {num,den} o número
+  function parse(s){
+    s=String(s).trim().replace(/−|–/g,'-').replace(/\s+/g,'').replace(/,/g,'.');
+    if(!s) return null;
+    const m=s.match(/^(-?\d+)\/(-?\d+)$/);
+    if(m){const d=+m[2]; if(!d) return null; return {n:+m[1],d};}
+    if(/^-?\d*\.?\d+$/.test(s)) return {x:+s};
+    return null;
+  }
+  const val=o=>o.x!==undefined?o.x:o.n/o.d;
+
+  // ---------- generadores: devuelven {q (HTML), a (texto correcto), check(resp)->{ok, casi}, exp (explicación), tipo} ----------
+  const num=(v,exp)=>({a:fmt(v),check:r=>{const o=parse(r);return {ok:!!o&&Math.abs(val(o)-v)<1e-9};},exp});
+  const fracAns=(n,d,exp)=>{const [a,b]=fr(n,d);return {a:frs(a,b),exp,check:r=>{const o=parse(r);if(!o)return{ok:false};
+      if(o.x!==undefined) return {ok:b===1&&o.x===a};
+      if(o.n*b!==a*o.d) return {ok:false};
+      const [p,q]=fr(o.n,o.d); const simple=(Math.abs(o.n)===Math.abs(p)&&Math.abs(o.d)===q);
+      return simple?{ok:true}:{ok:false,casi:'Es equivalente, pero falta simplificar.'};}};};
+  const vf=(v,exp)=>({tipo:'vf',a:v?'V':'F',exp,check:r=>({ok:r===(v?'V':'F')})});
+
+  const G={
+    pf1:[{t:'Valor de verdad',f(){
+      const p=Math.random()<.5,q=Math.random()<.5,V=b=>b?'V':'F';
+      const ops=[['¬p',!p,'La negación cambia el valor: si p es '+V(p)+', ¬p es '+V(!p)+'.'],
+        ['p ∧ q',p&&q,'La conjunción solo es V cuando las dos son V.'],
+        ['p ∨ q',p||q,'La disyunción es V si al menos una es V.'],
+        ['p → q',!p||q,'La condicional solo es F cuando p es V y q es F.'],
+        ['p ↔ q',p===q,'La bicondicional es V cuando las dos tienen el mismo valor.'],
+        ['¬p ∧ q',!p&&q,'Primero ¬p = '+V(!p)+'; luego la conjunción con q = '+V(q)+'.'],
+        ['p ∨ ¬q',p||!q,'Primero ¬q = '+V(!q)+'; luego la disyunción con p = '+V(p)+'.']];
+      const [e,v,x]=pick(ops);
+      return Object.assign(vf(v,x),{q:'Si <b>p = '+V(p)+'</b> y <b>q = '+V(q)+'</b>, ¿cuánto vale <b>'+e+'</b>?'});}}],
+    pf2:[{t:'Numeración maya',f(){
+      const n=R(1,19),b=Math.floor(n/5),d=n%5;
+      const dib='<span class="mayan">'+(d?'<span class="md">'+'<i></i>'.repeat(d)+'</span>':'')+'<span class="mb"></span>'.repeat(b)+'</span>';
+      return Object.assign(num(n,b+' barra'+(b===1?'':'s')+' × 5 + '+d+' punto'+(d===1?'':'s')+' = '+n+'.'),{q:'¿Qué número es? '+dib});}},
+     {t:'Valor posicional',f(){
+      let s,i,dig; do{ s=String(R(10000,99999)); i=R(0,4); dig=+s[i]; }while(!dig);
+      const v=dig*10**(4-i),nom=['decenas de millar','unidades de millar','centenas','decenas','unidades'][i];
+      return Object.assign(num(v,'El '+dig+' está en las '+nom+': vale '+dig+' × '+miles(10**(4-i))+' = '+miles(v)+'.'),{q:'En <b>'+miles(s)+'</b>, ¿cuánto vale el <b>'+dig+'</b> que está en las <b>'+nom+'</b>?'});}}],
+    pf3:[{t:'Suma y resta de enteros',f(){
+      const a=R(-20,20),b=R(-20,20),s=Math.random()<.5;const v=s?a+b:a-b;
+      const exp=s?(Math.sign(a)===Math.sign(b)||!a||!b?'Mismo signo: se suman y se conserva el signo.':'Signos distintos: se restan y queda el signo del de mayor valor absoluto.')+' Resultado: '+M(v)+'.'
+                 :'Restar es sumar el opuesto: '+M(a)+' − '+P(b)+' = '+M(a)+' + '+P(-b)+' = '+M(v)+'.';
+      return Object.assign(num(v,exp),{q:'<span class="big">'+M(a)+(s?' + ':' − ')+P(b)+' =</span>'});}},
+     {t:'Multiplicación y división',f(){
+      const sg=()=>Math.random()<.5?-1:1,a=sg()*R(2,12),b=sg()*R(2,9),mul=Math.random()<.5;
+      if(mul){const v=a*b;return Object.assign(num(v,((a<0)===(b<0)?'Signos iguales dan positivo: ':'Signos distintos dan negativo: ')+Math.abs(a)+' × '+Math.abs(b)+' = '+Math.abs(v)+', así que el resultado es '+M(v)+'.'),{q:'<span class="big">'+P(a)+' × '+P(b)+' =</span>'});}
+      const v=a,c=a*b;return Object.assign(num(v,((c<0)===(b<0)?'Signos iguales dan positivo':'Signos distintos dan negativo')+': '+Math.abs(c)+' ÷ '+Math.abs(b)+' = '+Math.abs(v)+'. Compruébalo: '+P(v)+' × '+P(b)+' = '+M(c)+'.'),{q:'<span class="big">'+P(c)+' ÷ '+P(b)+' =</span>'});}},
+     {t:'MCD y MCM',f(){
+      const pares=[[12,18],[8,12],[6,15],[10,25],[9,12],[14,21],[16,24],[15,20],[18,24],[20,30],[4,10],[6,8]];
+      const [a,b]=pick(pares),mcd=Math.random()<.5;const v=mcd?gcd(a,b):lcm(a,b);
+      return Object.assign(num(v,mcd?'El mayor número que divide a '+a+' y a '+b+' es '+v+'.':'El menor múltiplo común de '+a+' y '+b+' es '+v+'.'),{q:'Calcula el <b>'+(mcd?'MCD':'MCM')+'</b> de <b>'+a+'</b> y <b>'+b+'</b>.'});}}],
+    pf4:[{t:'Suma y resta de fracciones',f(){
+      let b=R(2,8),d=R(2,8),a=R(1,b-1),c=R(1,d-1);const s=Math.random()<.6;if(!s&&a*d<c*b){[a,b,c,d]=[c,d,a,b];}
+      const L=lcm(b,d),n=a*(L/b)+(s?1:-1)*c*(L/d);
+      return Object.assign(fracAns(n,L,'Denominador común '+L+': '+(a*L/b)+'/'+L+(s?' + ':' − ')+(c*L/d)+'/'+L+' = '+M(n)+'/'+L+(gcd(n,L)>1?' = '+frs(n,L):'')+'.'),{q:'<span class="big">'+a+'/'+b+(s?' + ':' − ')+c+'/'+d+' =</span>',fr:true});}},
+     {t:'Multiplicación y división',f(){
+      const a=R(1,7),b=R(2,9),c=R(1,7),d=R(2,9),mul=Math.random()<.5;
+      if(mul) return Object.assign(fracAns(a*c,b*d,'Arriba por arriba y abajo por abajo: '+(a*c)+'/'+(b*d)+(gcd(a*c,b*d)>1?' = '+frs(a*c,b*d):'')+'.'),{q:'<span class="big">'+a+'/'+b+' × '+c+'/'+d+' =</span>',fr:true});
+      return Object.assign(fracAns(a*d,b*c,'Se multiplica por la fracción volteada: '+a+'/'+b+' × '+d+'/'+c+' = '+(a*d)+'/'+(b*c)+(gcd(a*d,b*c)>1?' = '+frs(a*d,b*c):'')+'.'),{q:'<span class="big">'+a+'/'+b+' ÷ '+c+'/'+d+' =</span>',fr:true});}},
+     {t:'Simplificar',f(){
+      const b=R(2,9),a=R(1,b-1),k=R(2,6);const[p,q]=fr(a,b);
+      return Object.assign(fracAns(a*k,b*k,'Divide arriba y abajo entre '+gcd(a*k,b*k)+': '+frs(p,q)+'.'),{q:'Simplifica <span class="big">'+(a*k)+'/'+(b*k)+'</span>',fr:true});}},
+     {t:'Porcentajes',f(){
+      const p=pick([5,10,15,20,25,30,40,50,60,75]),base=pick([20,40,60,80,100,120,150,200,240,300,400,500,600,800]);
+      const v=p*base/100;if(v!==Math.round(v))return G.pf4[3].f();
+      return Object.assign(num(v,p+'% = '+(p/100)+', y '+base+' × '+(p/100)+' = '+v+'.'),{q:'¿Cuánto es el <b>'+p+'%</b> de <b>'+base+'</b>?'});}}],
+    pf5:[{t:'Potencias',f(){
+      if(Math.random()<.25){const a=R(2,5),n=R(1,3);return Object.assign(fracAns(1,a**n,'El exponente negativo es el inverso: 1/'+a+sup(n)+' = 1/'+(a**n)+'.'),{q:'<span class="big">'+a+sup(-n)+' =</span> <span class="hint">(escríbelo como fracción)</span>',fr:true});}
+      const a=R(2,10),n=a>5?R(0,2):R(0,4);
+      return Object.assign(num(a**n,n===0?'Todo número (distinto de 0) elevado a 0 es 1.':n===1?'Un número elevado a 1 es el mismo número.':Array(n).fill(a).join(' × ')+' = '+(a**n)+'.'),{q:'<span class="big">'+a+sup(n)+' =</span>'});}},
+     {t:'Leyes de los exponentes',f(){
+      const a=R(2,9),m=R(2,7),n=R(1,5),k=R(0,2);
+      if(k===0) return Object.assign(num(m+n,'Misma base al multiplicar: se suman los exponentes, '+m+' + '+n+' = '+(m+n)+'.'),{q:'<span class="big">'+a+sup(m)+' · '+a+sup(n)+' = '+a+'<sup>?</sup></span>'});
+      if(k===1) return Object.assign(num(m-n,'Misma base al dividir: se restan los exponentes, '+m+' − '+n+' = '+M(m-n)+'.'),{q:'<span class="big">'+a+sup(m)+' ÷ '+a+sup(n)+' = '+a+'<sup>?</sup></span>'});
+      return Object.assign(num(m*n,'Potencia de una potencia: se multiplican, '+m+' × '+n+' = '+(m*n)+'.'),{q:'<span class="big">('+a+sup(m)+')'+sup(n)+' = '+a+'<sup>?</sup></span>'});}},
+     {t:'Raíces exactas',f(){
+      if(Math.random()<.65){const k=R(2,15);return Object.assign(num(k,k+' × '+k+' = '+(k*k)+', así que √'+(k*k)+' = '+k+'.'),{q:'<span class="big">√'+(k*k)+' =</span>'});}
+      const k=R(2,6);return Object.assign(num(k,k+' × '+k+' × '+k+' = '+(k**3)+', así que ³√'+(k**3)+' = '+k+'.'),{q:'<span class="big">³√'+(k**3)+' =</span>'});}}],
+    pf6:[{t:'Conversiones',f(){
+      const c=pick([['km','m',1000],['m','cm',100],['L','mL',1000],['kg','g',1000],['m','mm',1000]]);
+      const x=pick([0.5,1.2,2.5,3,0.75,4.8,0.25,7,1.05,0.3]);
+      if(Math.random()<.5) return Object.assign(num(x*c[2],'1 '+c[0]+' = '+miles(c[2])+' '+c[1]+', así que '+x+' × '+miles(c[2])+' = '+miles(fmt(x*c[2]))+' '+c[1]+'.'),{q:'<b>'+x+' '+c[0]+'</b> = ¿cuántos <b>'+c[1]+'</b>?'});
+      const y=Math.round(x*c[2]);return Object.assign(num(y/c[2],'1 '+c[0]+' = '+miles(c[2])+' '+c[1]+', así que '+miles(y)+' ÷ '+miles(c[2])+' = '+fmt(y/c[2])+' '+c[0]+'.'),{q:'<b>'+miles(y)+' '+c[1]+'</b> = ¿cuántos <b>'+c[0]+'</b>?'});}},
+     {t:'Notación científica',f(){
+      const a=pick([1.5,2,2.5,3.2,4,4.5,6,7.5,8,9.1]),n=pick([-5,-4,-3,-2,3,4,5,6,7,8]);
+      const v=a*10**n;const vs=n<0?fmt(+v.toFixed(-n+2)):miles(fmt(Math.round(v)));
+      if(Math.random()<.5) return Object.assign(num(n,(n>0?'El punto se recorre '+n+' lugares a la izquierda':'El punto se recorre '+(-n)+' lugares a la derecha')+' para dejar '+a+': exponente '+M(n)+'.'),{q:'<b>'+vs+'</b> = '+a+' × 10<sup>?</sup>'});
+      return Object.assign(num(v,'Se recorre el punto '+Math.abs(n)+' lugares '+(n>0?'a la derecha':'a la izquierda')+': '+vs+'.'),{q:'Escribe como número normal: <b>'+a+' × 10'+sup(n)+'</b>'});}}],
+    pf7:[{t:'Jerarquía de operaciones',f(){
+      const a=R(2,9),b=R(2,9),c=R(2,9),d=R(1,9);
+      const T=[
+        ()=>[a+' + '+b+' × '+c, a+b*c, 'Primero '+b+' × '+c+' = '+(b*c)+'; luego '+a+' + '+(b*c)+' = '+(a+b*c)+'.'],
+        ()=>['('+a+' + '+b+') × '+c,(a+b)*c,'Primero el paréntesis: '+(a+b)+'; luego × '+c+' = '+((a+b)*c)+'.'],
+        ()=>[(b*c)+' ÷ '+c+' × '+a, b*a,'Mismo nivel, de izquierda a derecha: '+(b*c)+' ÷ '+c+' = '+b+'; luego '+b+' × '+a+' = '+(b*a)+'.'],
+        ()=>[a+sup(2)+' − '+b+' × '+c, a*a-b*c,'Primero la potencia: '+(a*a)+'; luego '+b+' × '+c+' = '+(b*c)+'; al final '+(a*a)+' − '+(b*c)+' = '+M(a*a-b*c)+'.'],
+        ()=>[d+' − '+a+' × '+b, d-a*b,'Primero '+a+' × '+b+' = '+(a*b)+'; luego '+d+' − '+(a*b)+' = '+M(d-a*b)+'.'],
+        ()=>['√'+(c*c)+' + '+a+' × ('+b+' − '+d+')', c+a*(b-d),'Raíz: '+c+'; paréntesis: '+M(b-d)+'; producto: '+a+' × '+P(b-d)+' = '+M(a*(b-d))+'; suma: '+c+' + '+P(a*(b-d))+' = '+M(c+a*(b-d))+'.'],
+        ()=>['2 × ['+a+' + ('+b+' − '+c+')]',2*(a+b-c),'De adentro hacia afuera: '+b+' − '+c+' = '+M(b-c)+'; '+a+' + '+P(b-c)+' = '+M(a+b-c)+'; × 2 = '+M(2*(a+b-c))+'.']];
+      const [e,v,x]=pick(T)();
+      return Object.assign(num(v,x),{q:'<span class="big">'+e.replace(/-/g,'−')+' =</span>'});}}]
+  };
+  const NOMBRES={pf1:'PF1 Lógica',pf2:'PF2 Conteo',pf3:'PF3 Enteros',pf4:'PF4 Fracciones',pf5:'PF5 Potencias',pf6:'PF6 Medición',pf7:'PF7 Combinadas'};
+
+  // ---------- interfaz ----------
+  const box=document.getElementById('prac'), sel=document.getElementById('prac-temas');
+  let tema=null, sub=0, ronda=null, actual=null;
+  const RONDA=10;
+  function yo(){try{return JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){return null;}}
+  function enviar(det){const a=yo();if(!a)return;const b=new URLSearchParams({tipo:'acceso',nombre:a.nombre,grupo:a.grupo,asignatura:ASIG,accion:'Práctica',detalle:det});
+    try{if(navigator.sendBeacon&&navigator.sendBeacon(URL,b))return;}catch(e){} fetch(URL,{method:'POST',mode:'no-cors',body:b,keepalive:true}).catch(()=>{});}
+  sel.innerHTML=Object.keys(G).map(k=>'<button type="button" class="qchip" data-pf="'+k.slice(2)+'" data-t="'+k+'" aria-pressed="false"><b>'+k.toUpperCase()+'</b> '+NOMBRES[k].replace(/^PF\d /,'')+'</button>').join('');
+  sel.querySelectorAll('.qchip').forEach(c=>c.addEventListener('click',()=>elegir(c.dataset.t,0)));
+  function elegir(t,s){
+    if(ronda&&ronda.n>0&&ronda.n<RONDA) enviarRonda(true);
+    tema=t; sub=s;
+    sel.querySelectorAll('.qchip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.t===t?'true':'false'));
+    box.setAttribute('data-pf',t.slice(2));
+    ronda={n:0,ok:0};
+    pintarSub(); nuevo();
+  }
+  function pintarSub(){
+    const subs=G[tema];
+    document.getElementById('prac-sub').innerHTML=subs.length>1?subs.map((g,i)=>'<button type="button" class="psub" aria-pressed="'+(i===sub)+'" data-i="'+i+'">'+g.t+'</button>').join(''):'<span class="psub only">'+subs[0].t+'</span>';
+    document.querySelectorAll('#prac-sub button').forEach(b=>b.addEventListener('click',()=>{ if(ronda.n>0&&ronda.n<RONDA) enviarRonda(true); sub=+b.dataset.i; ronda={n:0,ok:0}; pintarSub(); nuevo(); }));
+  }
+  function enviarRonda(incompleta){ if(ronda&&ronda.n>0) enviar(NOMBRES[tema]+' · '+G[tema][sub].t+' · '+ronda.ok+'/'+ronda.n+(incompleta?' (incompleta)':'')); }
+  function nuevo(){
+    actual=G[tema][sub].f();
+    const vfBtns='<div class="pvf"><button type="button" class="btn pans" data-v="V">V · Verdadera</button><button type="button" class="btn pans" data-v="F">F · Falsa</button></div>';
+    const entrada='<form id="pform" class="pform" novalidate autocomplete="off"><input id="pin" class="pin" inputmode="text" aria-label="Tu respuesta" placeholder="Respuesta"><div class="pkeys"><button type="button" data-k="−">−</button><button type="button" data-k="/">/</button><button type="button" data-k=".">.</button></div><button class="btn" type="submit">Revisar</button></form>'+(actual.fr?'<p class="hint">Escribe fracciones así: 3/4. Si es negativa: −3/4.</p>':'');
+    document.getElementById('prac-area').innerHTML='<div class="pcount">Ejercicio '+(ronda.n+1)+' de '+RONDA+' · Aciertos: '+ronda.ok+'</div><div class="pq">'+actual.q+'</div>'+(actual.tipo==='vf'?vfBtns:entrada)+'<div id="pfb" class="pfb" aria-live="polite"></div>';
+    if(actual.tipo==='vf'){ document.querySelectorAll('.pans').forEach(b=>b.addEventListener('click',()=>revisar(b.dataset.v))); }
+    else{ const f=document.getElementById('pform'),i=document.getElementById('pin');
+      f.addEventListener('submit',e=>{e.preventDefault();revisar(i.value);});
+      document.querySelectorAll('.pkeys button').forEach(k=>k.addEventListener('click',()=>{i.value+=k.dataset.k;i.focus();}));
+      if(window.matchMedia('(pointer:fine)').matches) i.focus(); }
+  }
+  function revisar(r){
+    const fb=document.getElementById('pfb');
+    if(actual.tipo!=='vf'&&!parse(r)){ fb.className='pfb err'; fb.textContent='Escribe un número o una fracción (por ejemplo 12, −5, 3/4 o 0.25).'; return; }
+    const res=actual.check(r); ronda.n++; if(res.ok) ronda.ok++;
+    document.querySelectorAll('#prac-area input, #prac-area .pans, #prac-area .pkeys button, #prac-area form .btn').forEach(x=>x.disabled=true);
+    fb.className='pfb '+(res.ok?'ok':'bad');
+    fb.innerHTML=(res.ok?'<b>✔ ¡Correcto!</b> ':'<b>✘ '+(res.casi||'No es correcto.')+'</b> La respuesta es <b>'+actual.a.replace(/-/g,'−')+'</b>. ')+actual.exp+
+      '<div class="qbar">'+(ronda.n<RONDA?'<button type="button" class="btn" id="psig">Siguiente</button>':'')+'</div>';
+    if(ronda.n<RONDA){ const s=document.getElementById('psig'); s.addEventListener('click',nuevo); s.focus(); }
+    else fin();
+  }
+  function fin(){
+    enviarRonda(false);
+    const ok=ronda.ok, msg=ok>=9?'¡Excelente! Dominas este tema.':ok>=7?'Muy bien. Haz otra ronda para afinar.':ok>=5?'Vas bien; repasa el video y vuelve a intentarlo.':'Repasa el video y la presentación del tema, y haz otra ronda.';
+    document.getElementById('pfb').insertAdjacentHTML('beforeend','<div class="pfin"><span class="qscore">'+ok+' / '+RONDA+'</span><span class="qmsg">'+msg+'</span><button type="button" class="btn" id="potra">Otra ronda</button></div>');
+    document.getElementById('potra').addEventListener('click',()=>{ronda={n:0,ok:0};nuevo();});
+  }
+  window.addEventListener('pagehide',()=>{ if(ronda&&ronda.n>0&&ronda.n<RONDA) enviarRonda(true); });
+})();
+
 </script>
 </body>
 </html>
