@@ -291,6 +291,72 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
 .mayan .md{display:flex;gap:6px}
 .mayan .md i{width:14px;height:14px;border-radius:50%;background:var(--chalk)}
 .mayan .mb{width:80px;height:12px;border-radius:6px;background:var(--chalk)}
+
+.sim{border-top:1px solid var(--line);padding-top:12px}
+.sim p{margin:.4em 0}
+.skeys{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.skeys button,.sstep button,.sop button{font:inherit;font-family:var(--f-mono);font-size:18px;font-weight:700;min-width:44px;height:44px;padding:0 10px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.skeys button:hover,.sstep button:hover{border-color:var(--c,var(--board))}
+.sexp{font:inherit;font-family:var(--f-mono);font-size:22px;width:100%;padding:10px 14px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.sexp:focus-visible,.sstep input:focus-visible,.ssel select:focus-visible,.ssel input:focus-visible{outline:3px solid var(--c,var(--board));outline-offset:1px}
+.sex{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0;font-size:14px;color:var(--ink2)}
+.sexb{font:inherit;font-family:var(--f-mono);font-size:14px;border:1px dashed var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:4px 8px;cursor:pointer}
+.sout{margin-top:12px}
+.swrap{overflow-x:auto;margin:10px 0}
+.stab{border-collapse:collapse;font-family:var(--f-mono);font-size:15px;text-align:center}
+.stab th,.stab td{border:1px solid var(--line);padding:6px 12px;white-space:nowrap}
+.stab th{background:var(--blue-soft);color:var(--ink)}
+.stab .res{background:var(--chalk);color:#1b2340;font-weight:700}
+.stab td.tv{color:#14532d}.stab td.tf{color:#b91c1c}
+.stab td.res.tv,.stab td.res.tf{color:#1b2340}
+.stab.sinfo th:first-child{text-align:left}
+.snote{font-size:15px;color:var(--ink2);line-height:1.5}
+.snote b{color:var(--ink)}
+.sbig{font-family:var(--f-mono);font-size:20px;line-height:1.5;overflow-wrap:anywhere}
+.serr{color:var(--red);font-weight:700}
+.srow{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:flex-end}
+.sstep{display:flex;align-items:center;gap:6px}
+.sstep span{font-size:14px;font-weight:700;color:var(--ink2);margin-right:4px}
+.sstep input{font:inherit;font-family:var(--f-mono);font-size:20px;width:84px;height:44px;text-align:center;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.sop{display:flex;gap:6px}
+.sop button[aria-pressed="true"]{background:var(--c,var(--board));border-color:var(--c,var(--board));color:#fff}
+.sfr{display:flex;flex-direction:column;gap:8px;padding:10px 12px;border:1px solid var(--line);border-radius:10px}
+.ssel{display:flex;flex-direction:column;gap:4px;font-size:14px;font-weight:700;color:var(--ink2)}
+.ssel select,.ssel input{font:inherit;font-size:16px;height:44px;padding:0 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);min-width:120px}
+.mstack{display:flex;flex-direction:column;gap:6px;margin:10px 0}
+.mlev{display:flex;align-items:center;gap:16px;border-bottom:1px dashed var(--line);padding:6px 0}
+.mgl{width:110px;min-height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:var(--board);border-radius:10px;padding:8px}
+.mgl .md{display:flex;gap:6px}.mgl .md i{width:14px;height:14px;border-radius:50%;background:var(--chalk)}
+.mgl .mb{width:76px;height:12px;border-radius:6px;background:var(--chalk)}
+.mgl .mshell{width:50px;height:24px;border-radius:50%;border:4px solid var(--chalk)}
+.mtx{font-family:var(--f-mono);font-size:16px}
+.rsvg{width:100%;min-width:420px;height:auto;display:block}
+.rsvg .rl{stroke:var(--ink2);stroke-width:2}
+.rsvg .rt{fill:var(--ink2);font-family:var(--f-mono);font-size:14px;text-anchor:middle}
+.rsvg .r0{fill:var(--ink);font-weight:700}
+.rsvg .rlab{fill:var(--c,var(--board));font-weight:700;font-size:16px}
+.rsvg .rarc{fill:none;stroke:var(--c,var(--board));stroke-width:3}
+.rsvg .rpa{fill:var(--ink2)}.rsvg .rpb{fill:var(--c,var(--board))}
+.fbars{display:flex;flex-direction:column;gap:12px;margin:10px 0}
+.fbars>div{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.fbars>div>b{font-family:var(--f-mono);font-size:18px;width:52px}
+.fbar{display:flex;flex:1 1 220px;max-width:420px;height:34px;border:2px solid var(--ink2);border-radius:6px;overflow:hidden}
+.fbar span{flex:1;border-right:1.5px solid var(--ink2)}.fbar span:last-child{border-right:none}
+.fbar .fa{background:var(--c,var(--board))}.fbar .fb2{background:var(--chalk)}
+.psq{display:grid;gap:2px;margin:10px 0;aspect-ratio:1;max-width:100%}
+.psq i{background:var(--c,var(--board));border-radius:2px;aspect-ratio:1}
+.ustairs{display:flex;align-items:flex-end;gap:4px;min-width:460px;padding-top:6px}
+.ustep{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;border:1.5px solid var(--line);border-radius:8px 8px 0 0;background:var(--paper);padding:6px 2px;font-size:13px}
+.ustep:nth-child(1){height:120px}.ustep:nth-child(2){height:106px}.ustep:nth-child(3){height:92px}.ustep:nth-child(4){height:78px}.ustep:nth-child(5){height:64px}.ustep:nth-child(6){height:50px}.ustep:nth-child(7){height:40px}
+.ustep b{font-family:var(--f-mono);font-size:15px}.ustep small{color:var(--ink2)}
+.ustep.upas{background:var(--blue-soft)}
+.ustep.ude{background:var(--chalk);border-color:#e0b400;color:#1b2340}.ustep.ude small{color:#1b2340}
+.ustep.ua{background:var(--c,var(--board));border-color:var(--c,var(--board));color:#fff}.ustep.ua small{color:#fff}
+.osteps{list-style:none;padding:0;margin:10px 0;display:flex;flex-direction:column;gap:6px;counter-reset:o}
+.osteps li{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;border-left:4px solid var(--c,var(--board));padding:6px 12px;background:var(--paper);border-radius:0 8px 8px 0}
+.osteps li span{font-size:13px;color:var(--ink2)}
+.osteps li b{font-family:var(--f-mono);font-size:19px;overflow-wrap:anywhere}
+.osteps li.o0{border-left-color:var(--chalk)}
 </style>
 </head>
 <body>
@@ -338,7 +404,7 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
 <p class="whoami" id="whoami" hidden>Entraste como <b id="whoami-n"></b> · <button type="button" id="whoami-x">No soy yo</button></p>
 <div class="wrap cols">
 <main>
-  <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones"><button type="button" role="tab" class="tab" id="tab-videos" data-tab="videos" aria-selected="false">Videos</button><button type="button" role="tab" class="tab" id="tab-autoeval" data-tab="autoeval" aria-selected="false">Autoevaluación</button><button type="button" role="tab" class="tab" id="tab-practica" data-tab="practica" aria-selected="false">Práctica</button><button type="button" role="tab" class="tab" id="tab-fechas" data-tab="fechas" aria-selected="false">Fechas</button><button type="button" role="tab" class="tab" id="tab-programa" data-tab="programa" aria-selected="false">Programa</button><button type="button" role="tab" class="tab" id="tab-materiales" data-tab="materiales" aria-selected="false">Materiales</button></nav>
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones"><button type="button" role="tab" class="tab" id="tab-videos" data-tab="videos" aria-selected="false">Videos</button><button type="button" role="tab" class="tab" id="tab-autoeval" data-tab="autoeval" aria-selected="false">Autoevaluación</button><button type="button" role="tab" class="tab" id="tab-simuladores" data-tab="simuladores" aria-selected="false">Simuladores</button><button type="button" role="tab" class="tab" id="tab-practica" data-tab="practica" aria-selected="false">Práctica</button><button type="button" role="tab" class="tab" id="tab-fechas" data-tab="fechas" aria-selected="false">Fechas</button><button type="button" role="tab" class="tab" id="tab-programa" data-tab="programa" aria-selected="false">Programa</button><button type="button" role="tab" class="tab" id="tab-materiales" data-tab="materiales" aria-selected="false">Materiales</button></nav>
 
   <div class="feed">
   <article id="avisos" data-k="evaluacion" class="pinned">
@@ -378,6 +444,14 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
   </article>
 
   
+  <article id="simuladores" data-k="simuladores">
+    <div class="meta"><span class="tag">interactivo</span><span class="tag">simuladores</span></div>
+    <h2><a href="#simuladores">Simuladores</a></h2>
+    <p>Un simulador por propósito formativo: cambia los valores y mira qué pasa. Sirven para entender el tema antes de practicar.</p>
+    <div class="qchips" id="sim-temas" role="group" aria-label="Elegir simulador"></div>
+    <div id="sim-area" class="sim"></div>
+  </article>
+
   <article id="practica" data-k="practica">
     <div class="meta"><span class="tag">ejercicios sin límite</span><span class="tag">práctica</span></div>
     <h2><a href="#practica">Práctica sin límite</a></h2>
@@ -951,7 +1025,7 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
 
 <script>
 (function(){
-  const MAP={"video": "videos", "autoeval": "autoeval", "practica": "practica", "evaluacion": "fechas", "calendario": "fechas", "programa": "programa", "cuadernillo": "materiales", "presentacion": "materiales", "aviso": "materiales"}, INTRO={"videos": "Un video por propósito formativo, en orden. Las etiquetas indican si el tema ya se vio o cuándo se verá en clase.", "practica": "Ejercicios nuevos cada vez, con revisión al momento. Practica cualquier tema las veces que quieras.", "autoeval": "Contesta 5 preguntas del tema que acabamos de ver. Se abren conforme avanzamos en clase.", "fechas": "Días sin clases, fechas de evaluación y registro para recibir recordatorios por correo.", "programa": "Propósitos y contenidos formativos del programa de Pensamiento Matemático I.", "materiales": "Cuadernillos y presentaciones para descargar."};
+  const MAP={"video": "videos", "autoeval": "autoeval", "simuladores": "simuladores", "practica": "practica", "evaluacion": "fechas", "calendario": "fechas", "programa": "programa", "cuadernillo": "materiales", "presentacion": "materiales", "aviso": "materiales"}, INTRO={"videos": "Un video por propósito formativo, en orden. Las etiquetas indican si el tema ya se vio o cuándo se verá en clase.", "simuladores": "Herramientas interactivas para ver cómo funciona cada tema: cambia los valores y observa.", "practica": "Ejercicios nuevos cada vez, con revisión al momento. Practica cualquier tema las veces que quieras.", "autoeval": "Contesta 5 preguntas del tema que acabamos de ver. Se abren conforme avanzamos en clase.", "fechas": "Días sin clases, fechas de evaluación y registro para recibir recordatorios por correo.", "programa": "Propósitos y contenidos formativos del programa de Pensamiento Matemático I.", "materiales": "Cuadernillos y presentaciones para descargar."};
   const tabs=[...document.querySelectorAll('.tab')], feed=document.querySelector('.feed');
   const arts=[...feed.querySelectorAll(':scope > article')];
   arts.forEach(a=>{ a.dataset.tab=MAP[a.dataset.k]||tabs[0].dataset.tab; });
@@ -1152,6 +1226,221 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
     document.getElementById('potra').addEventListener('click',()=>{ronda={n:0,ok:0};nuevo();});
   }
   window.addEventListener('pagehide',()=>{ if(ronda&&ronda.n>0&&ronda.n<RONDA) enviarRonda(true); });
+})();
+
+</script>
+<script>
+(function(){
+  const URL='https://script.google.com/macros/s/AKfycbwHqdoeheOWDYq9cho9NqCHgZV3_IqR1XM55QhPgdY1jZ782HI7Cm27zMWuopqCCfnC5w/exec', ASIG='PM1', KEY='alumno_pm252';
+  const $=s=>document.querySelector(s), area=$('#sim-area'), sel=$('#sim-temas');
+  const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const M=n=>String(n).replace(/-/g,'−');
+  const fmt=x=>{if(!isFinite(x))return '—';const r=Math.round(x*1e6)/1e6;return M(r.toString().includes('e')?r.toPrecision(6):r.toString());};
+  const gcd=(a,b)=>{a=Math.abs(a);b=Math.abs(b);while(b){[a,b]=[b,a%b];}return a||1;};
+  const SUP={'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹','-':'⁻'};
+  const sup=n=>String(n).split('').map(c=>SUP[c]||c).join('');
+  const usados=new Set();
+  function uso(id){ if(usados.has(id))return; usados.add(id); let a=null; try{a=JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){} if(!a)return;
+    const b=new URLSearchParams({tipo:'acceso',nombre:a.nombre,grupo:a.grupo,asignatura:ASIG,accion:'Usó simulador',detalle:NOM[id]});
+    try{if(navigator.sendBeacon&&navigator.sendBeacon(URL,b))return;}catch(e){} fetch(URL,{method:'POST',mode:'no-cors',body:b,keepalive:true}).catch(()=>{}); }
+  const NOM={pf1:'PF1 Tablas de verdad',pf2:'PF2 Numeración maya',pf3:'PF3 Recta numérica',pf4:'PF4 Barras de fracciones',pf5:'PF5 Potencias y raíces',pf6:'PF6 Escalera de unidades',pf7:'PF7 Operaciones paso a paso'};
+  const step=(id,label,min,max,v)=>'<div class="sstep"><span>'+label+'</span><button type="button" data-s="'+id+'" data-d="-1" aria-label="Menos">−</button><input id="'+id+'" type="number" min="'+min+'" max="'+max+'" value="'+v+'" inputmode="numeric"><button type="button" data-s="'+id+'" data-d="1" aria-label="Más">+</button></div>';
+  function wireSteps(cb){
+    area.querySelectorAll('.sstep button').forEach(b=>b.addEventListener('click',()=>{const i=$('#'+b.dataset.s);const v=Math.max(+i.min,Math.min(+i.max,(+i.value||0)+ +b.dataset.d));i.value=v;cb();}));
+    area.querySelectorAll('.sstep input').forEach(i=>i.addEventListener('input',()=>{cb();}));
+  }
+  const iv=id=>{const i=$('#'+id);let v=Math.round(+i.value);if(!isFinite(v))v=+i.min>0?+i.min:0;return Math.max(+i.min,Math.min(+i.max,v));};
+
+  // ================= PF1 Tablas de verdad =================
+  function pf1(){
+    area.innerHTML='<p>Escribe una proposición con los botones y mira su tabla de verdad completa.</p>'+
+      '<div class="skeys">'+['p','q','r','¬','∧','∨','→','↔','(',')'].map(k=>'<button type="button" data-k="'+k+'">'+k+'</button>').join('')+'<button type="button" data-k="⌫" aria-label="Borrar uno">⌫</button><button type="button" data-k="C">Borrar</button></div>'+
+      '<input id="t-exp" class="sexp" value="(p → q) ∧ p" aria-label="Proposición" autocomplete="off">'+
+      '<div class="sex">Ejemplos: '+['p → q','¬(p ∧ q)','¬p ∨ ¬q','(p → q) ∧ (q → p)','p ∨ ¬p','(p ∧ q) → r'].map(e=>'<button type="button" class="sexb">'+e+'</button>').join('')+'</div>'+
+      '<div id="t-out" class="sout"></div>';
+    const inp=$('#t-exp');
+    area.querySelectorAll('.skeys button').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.k;
+      if(k==='C') inp.value=''; else if(k==='⌫') inp.value=inp.value.trimEnd().slice(0,-1).trimEnd(); else inp.value=(inp.value+' '+k).replace(/^\s+/,'').replace(/\( /g,'(').replace(/ \)/g,')').replace(/¬ /g,'¬');
+      calc();}));
+    area.querySelectorAll('.sexb').forEach(b=>b.addEventListener('click',()=>{inp.value=b.textContent;calc();}));
+    inp.addEventListener('input',calc);
+    function tok(s){
+      s=s.replace(/<->|<=>/g,'↔').replace(/->|=>/g,'→').replace(/[~!]/g,'¬').replace(/&|\^/g,'∧').replace(/\|/g,'∨').replace(/\s+/g,'');
+      s=s.replace(/\by\b/g,'∧');
+      const t=[];for(const c of s){ if('pqr¬∧∨→↔()'.includes(c)) t.push(c); else if(c==='v'||c==='o') t.push('∨'); else throw new Error('No reconozco el símbolo “'+c+'”.'); } return t;
+    }
+    function parse(t){
+      let i=0;const nodes=[];
+      const peek=()=>t[i], eat=c=>{if(t[i]!==c)throw new Error(c===')'?'Falta cerrar un paréntesis.':'Revisa la proposición.');i++;};
+      const mk=(op,a,b)=>{const s=op==='¬'?'¬'+(a.op&&a.op!=='¬'&&a.op!=='v'?'('+a.s+')':a.s):(wrap(a,op))+' '+op+' '+(wrap(b,op));const n={op,a,b,s};nodes.push(n);return n;};
+      const wrap=(x,op)=>x.op&&x.op!=='v'&&x.op!=='¬'?'('+x.s+')':x.s;
+      function bi(){let a=imp();while(peek()==='↔'){i++;a=mk('↔',a,imp());}return a;}
+      function imp(){const a=or();if(peek()==='→'){i++;return mk('→',a,imp());}return a;}
+      function or(){let a=and();while(peek()==='∨'){i++;a=mk('∨',a,and());}return a;}
+      function and(){let a=not();while(peek()==='∧'){i++;a=mk('∧',a,not());}return a;}
+      function not(){if(peek()==='¬'){i++;return mk('¬',not());}return atom();}
+      function atom(){const c=peek();if(c==='('){i++;const a=bi();eat(')');return a;} if('pqr'.includes(c||'#')){i++;return {op:'v',s:c,v:c};} throw new Error(c?'Revisa la proposición cerca de “'+c+'”.':'La proposición está incompleta.');}
+      if(!t.length) throw new Error('Escribe una proposición.');
+      const root=bi(); if(i<t.length) throw new Error(t[i]===')'?'Sobra un paréntesis de cierre.':'Revisa la proposición cerca de “'+t[i]+'”.');
+      return {root,nodes};
+    }
+    const ev=(n,e)=>n.op==='v'?e[n.v]:n.op==='¬'?!ev(n.a,e):n.op==='∧'?ev(n.a,e)&&ev(n.b,e):n.op==='∨'?ev(n.a,e)||ev(n.b,e):n.op==='→'?!ev(n.a,e)||ev(n.b,e):ev(n.a,e)===ev(n.b,e);
+    function calc(){
+      uso('pf1'); const out=$('#t-out');
+      try{
+        const {root,nodes}=parse(tok(inp.value)); const vars=['p','q','r'].filter(v=>inp.value.includes(v)); if(!vars.length) throw new Error('Usa al menos una variable: p, q o r.');
+        const cols=[];const seen=new Set();nodes.forEach(n=>{if(!seen.has(n.s)){seen.add(n.s);cols.push(n);}});
+        const rows=[];const N=vars.length;for(let k=0;k<2**N;k++){const e={};vars.forEach((v,j)=>e[v]=!((k>>(N-1-j))&1));rows.push(e);}
+        const V=b=>'<td class="'+(b?'tv':'tf')+'">'+(b?'V':'F')+'</td>';
+        let h='<div class="swrap"><table class="stab"><thead><tr>'+vars.map(v=>'<th>'+v+'</th>').join('')+cols.map(c=>'<th'+(c===root?' class="res"':'')+'>'+esc(c.s)+'</th>').join('')+'</tr></thead><tbody>';
+        const res=[];rows.forEach(e=>{h+='<tr>'+vars.map(v=>V(e[v])).join('')+cols.map(c=>{const b=ev(c,e);if(c===root)res.push(b);return V(b).replace('<td class="','<td class="'+(c===root?'res ':''));}).join('')+'</tr>';});
+        h+='</tbody></table></div>';
+        const tipo=res.every(x=>x)?'<b>Tautología</b>: es verdadera en todos los casos.':res.every(x=>!x)?'<b>Contradicción</b>: es falsa en todos los casos.':'<b>Contingencia</b>: es verdadera en '+res.filter(x=>x).length+' de '+res.length+' casos.';
+        out.innerHTML=(root.op==='v'?'':h)+'<p class="snote">'+tipo+'</p>';
+      }catch(e){ out.innerHTML='<p class="serr">'+esc(e.message)+'</p>'; }
+    }
+    calc();
+  }
+
+  // ================= PF2 Numeración maya =================
+  function pf2(){
+    area.innerHTML='<p>Escribe un número del 0 al 7 999 y míralo en numeración maya, que es de base 20. Cada nivel vale 20 veces más que el de abajo.</p>'+step('m-n','Número',0,7999,365)+'<div id="m-out" class="sout"></div>';
+    const glifo=v=>{ if(v===0) return '<span class="mshell" title="cero"></span>'; const b=Math.floor(v/5),d=v%5; return (d?'<span class="md">'+'<i></i>'.repeat(d)+'</span>':'')+'<span class="mb"></span>'.repeat(b); };
+    function calc(){ uso('pf2'); const n=iv('m-n'); const L=[400,20,1]; let r=n; const dig=L.map(x=>{const d=Math.floor(r/x);r-=d*x;return d;});
+      let first=dig.findIndex(d=>d>0); if(first<0) first=2;
+      const filas=L.map((x,i)=>i<first?'':'<div class="mlev"><div class="mgl">'+glifo(dig[i])+'</div><div class="mtx"><b>'+dig[i]+'</b> × '+x.toLocaleString('es-MX')+' = '+(dig[i]*x).toLocaleString('es-MX')+'</div></div>').join('');
+      $('#m-out').innerHTML='<div class="mstack">'+filas+'</div><p class="snote">'+L.map((x,i)=>i<first?null:dig[i]+' × '+x).filter(Boolean).join(' + ')+' = <b>'+n.toLocaleString('es-MX')+'</b>. Punto = 1, barra = 5, concha = 0.</p>'; }
+    wireSteps(calc); calc();
+  }
+
+  // ================= PF3 Recta numérica =================
+  function pf3(){
+    area.innerHTML='<p>Elige dos enteros y una operación. La flecha muestra el salto sobre la recta numérica.</p><div class="srow">'+step('r-a','Empiezo en',-15,15,-3)+
+      '<div class="sop" role="group" aria-label="Operación"><button type="button" data-o="+" aria-pressed="true">+</button><button type="button" data-o="−" aria-pressed="false">−</button></div>'+step('r-b','Número',-15,15,7)+'</div><div id="r-out" class="sout"></div>';
+    let op='+';
+    area.querySelectorAll('.sop button').forEach(b=>b.addEventListener('click',()=>{op=b.dataset.o;area.querySelectorAll('.sop button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));calc();}));
+    function calc(){ uso('pf3'); const a=iv('r-a'),b=iv('r-b'),mov=op==='+'?b:-b,res=a+mov;
+      const lo=Math.min(-5,a,res)-2,hi=Math.max(5,a,res)+2,W=640,pad=24,x=v=>pad+(v-lo)*(W-2*pad)/(hi-lo);
+      let s='<svg viewBox="0 0 '+W+' 120" class="rsvg" role="img" aria-label="Recta numérica de '+lo+' a '+hi+'"><line x1="'+pad/2+'" y1="80" x2="'+(W-pad/2)+'" y2="80" class="rl"/>';
+      for(let v=lo;v<=hi;v++){const big=v%5===0;s+='<line x1="'+x(v)+'" y1="'+(big?72:75)+'" x2="'+x(v)+'" y2="'+(big?88:85)+'" class="rl"/>'+(big||v===a||v===res?'<text x="'+x(v)+'" y="106" class="rt'+(v===0?' r0':'')+'">'+M(v)+'</text>':'');}
+      const x1=x(a),x2=x(res),mid=(x1+x2)/2,hgt=Math.min(60,20+Math.abs(x2-x1)/6);
+      if(a!==res) s+='<path d="M'+x1+' 78 Q'+mid+' '+(78-hgt*1.6)+' '+x2+' 78" class="rarc"/><text x="'+mid+'" y="'+(70-hgt*0.8)+'" class="rt rlab">'+(mov>0?'+':'−')+Math.abs(mov)+'</text>';
+      s+='<circle cx="'+x1+'" cy="80" r="7" class="rpa"/><circle cx="'+x2+'" cy="80" r="7" class="rpb"/></svg>';
+      const txt=op==='−'?M(a)+' − '+(b<0?'('+M(b)+')':b)+' = '+M(a)+' + '+(-b<0?'('+M(-b)+')':-b)+' = <b>'+M(res)+'</b>. Restar es sumar el opuesto.':M(a)+' + '+(b<0?'('+M(b)+')':b)+' = <b>'+M(res)+'</b>.';
+      $('#r-out').innerHTML='<div class="swrap">'+s+'</div><p class="snote">'+txt+' '+(mov>0?'Avanzas '+mov+' a la derecha.':mov<0?'Avanzas '+(-mov)+' a la izquierda.':'No te mueves.')+'</p>'; }
+    wireSteps(calc); calc();
+  }
+
+  // ================= PF4 Barras de fracciones =================
+  function pf4(){
+    area.innerHTML='<p>Cambia las dos fracciones y compáralas con las barras. Cada barra es un entero.</p><div class="srow"><div class="sfr"><b>Fracción A</b>'+step('f-a','Numerador',0,12,3)+step('f-b','Denominador',1,12,4)+'</div><div class="sfr"><b>Fracción B</b>'+step('f-c','Numerador',0,12,2)+step('f-d','Denominador',1,12,3)+'</div></div><div id="f-out" class="sout"></div>';
+    const bar=(n,d,cls)=>{let h='';const ent=Math.max(1,Math.ceil(n/d));for(let e=0;e<ent;e++){h+='<div class="fbar">';for(let i=0;i<d;i++)h+='<span class="'+(e*d+i<n?cls:'')+'"></span>';h+='</div>';}return h;};
+    function calc(){ uso('pf4'); const a=iv('f-a'),b=iv('f-b'),c=iv('f-c'),d=iv('f-d');
+      const L=b*d/gcd(b,d),sn=a*(L/b)+c*(L/d),g=gcd(sn,L),cmp=a*d===c*b?'=':a*d>c*b?'>':'<';
+      const simp=(n,dd)=>{const k=gcd(n,dd);return k>1&&n?' = '+(n/k)+'/'+(dd/k):'';};
+      $('#f-out').innerHTML='<div class="fbars"><div><b>'+a+'/'+b+'</b>'+bar(a,b,'fa')+'</div><div><b>'+c+'/'+d+'</b>'+bar(c,d,'fb2')+'</div></div>'+
+        '<div class="swrap"><table class="stab sinfo"><tr><th></th><th>'+a+'/'+b+'</th><th>'+c+'/'+d+'</th></tr><tr><th>Decimal</th><td>'+fmt(a/b)+'</td><td>'+fmt(c/d)+'</td></tr><tr><th>Porcentaje</th><td>'+fmt(100*a/b)+'%</td><td>'+fmt(100*c/d)+'%</td></tr><tr><th>Simplificada</th><td>'+(a?(a/gcd(a,b))+'/'+(b/gcd(a,b)):'0')+'</td><td>'+(c?(c/gcd(c,d))+'/'+(d/gcd(c,d)):'0')+'</td></tr></table></div>'+
+        '<p class="snote"><b>'+a+'/'+b+' '+cmp+' '+c+'/'+d+'</b> (en productos cruzados: '+a+' × '+d+' = '+(a*d)+' y '+c+' × '+b+' = '+(c*b)+').</p>'+
+        '<p class="snote">Suma: '+a+'/'+b+' + '+c+'/'+d+' = '+(a*L/b)+'/'+L+' + '+(c*L/d)+'/'+L+' = <b>'+sn+'/'+L+simp(sn,L)+'</b></p>'; }
+    wireSteps(calc); calc();
+  }
+
+  // ================= PF5 Potencias y raíces =================
+  function pf5(){
+    area.innerHTML='<p>Elige la base y el exponente. Con exponente 2 verás el cuadrado que da nombre a la potencia, y su raíz.</p><div class="srow">'+step('p-a','Base',1,12,3)+step('p-n','Exponente',-3,6,2)+'</div><div id="p-out" class="sout"></div>';
+    function calc(){ uso('pf5'); const a=iv('p-a'),n=iv('p-n'),v=a**n;
+      let t;
+      if(n===0) t=a+sup(0)+' = <b>1</b>. Todo número (distinto de 0) elevado a 0 es 1.';
+      else if(n>0) t=a+sup(n)+' = '+Array(n).fill(a).join(' × ')+' = <b>'+v.toLocaleString('es-MX')+'</b>';
+      else t=a+sup(n)+' = 1/'+a+sup(-n)+' = <b>1/'+(a**-n).toLocaleString('es-MX')+'</b> = '+fmt(v)+'. El exponente negativo es el inverso.';
+      let fig='';
+      if(n===2&&a<=12){ fig='<div class="psq" style="grid-template-columns:repeat('+a+',1fr);width:'+Math.min(260,a*24)+'px">'+'<i></i>'.repeat(a*a)+'</div><p class="snote">Un cuadrado de '+a+' por '+a+' tiene <b>'+(a*a)+'</b> cuadritos. Por eso √'+(a*a)+' = <b>'+a+'</b>: la raíz cuadrada busca el lado del cuadrado.</p>'; }
+      else if(n===3) fig='<p class="snote">Un cubo de '+a+' × '+a+' × '+a+' tiene <b>'+(a**3)+'</b> cubitos. Por eso ³√'+(a**3)+' = <b>'+a+'</b>.</p>';
+      const tabla='<div class="swrap"><table class="stab sinfo"><tr><th>Exponente</th>'+[0,1,2,3,4,5,6].map(k=>'<th'+(k===n?' class="res"':'')+'>'+a+sup(k)+'</th>').join('')+'</tr><tr><th>Valor</th>'+[0,1,2,3,4,5,6].map(k=>'<td'+(k===n?' class="res"':'')+'>'+(a**k).toLocaleString('es-MX')+'</td>').join('')+'</tr></table></div>';
+      $('#p-out').innerHTML='<p class="sbig">'+t+'</p>'+fig+tabla+'<p class="snote">Mira cómo crece: cada vez que el exponente sube 1, el valor se multiplica por '+a+'.</p>'; }
+    wireSteps(calc); calc();
+  }
+
+  // ================= PF6 Escalera de unidades =================
+  function pf6(){
+    const MAG={m:['Longitud','m'],g:['Masa','g'],L:['Capacidad','L']};
+    const PRE=[['k',3,'kilo'],['h',2,'hecto'],['da',1,'deca'],['',0,'unidad'],['d',-1,'deci'],['c',-2,'centi'],['m',-3,'mili']];
+    area.innerHTML='<p>Convierte unidades del Sistema Internacional con la escalera: cada escalón es × 10 o ÷ 10.</p>'+
+      '<div class="srow"><label class="ssel">Magnitud<select id="u-m">'+Object.keys(MAG).map(k=>'<option value="'+k+'">'+MAG[k][0]+' ('+MAG[k][1]+')</option>').join('')+'</select></label>'+
+      '<label class="ssel">Cantidad<input id="u-v" type="text" inputmode="decimal" value="2.5"></label>'+
+      '<label class="ssel">De<select id="u-de"></select></label><label class="ssel">A<select id="u-a"></select></label></div><div id="u-out" class="sout"></div>';
+    const de=$('#u-de'),a=$('#u-a'),mg=$('#u-m');
+    function opts(){const b=MAG[mg.value][1];const o=PRE.map(p=>'<option value="'+p[1]+'">'+p[0]+b+' ('+p[2]+(p[1]?b==='m'?'metro':b==='g'?'gramo':'litro':'')+')</option>').join('');
+      const kd=de.value,ka=a.value;de.innerHTML=o;a.innerHTML=o;de.value=kd||'3';a.value=ka||'0';}
+    function cientifica(x){ if(!x) return '0'; const e=Math.floor(Math.log10(Math.abs(x))); const m=x/10**e; return fmt(m)+' × 10'+sup(e); }
+    function calc(){ uso('pf6'); const b=MAG[mg.value][1]; const v=+String($('#u-v').value).replace(',','.'); const pd=+de.value,pa=+a.value;
+      if(!isFinite(v)){ $('#u-out').innerHTML='<p class="serr">Escribe una cantidad, por ejemplo 2.5</p>'; return; }
+      const dif=pd-pa,r=v*10**dif,u=p=>PRE.find(x=>x[1]===p)[0]+b;
+      const esc_=PRE.map(p=>'<div class="ustep'+(p[1]===pd?' ude':'')+(p[1]===pa?' ua':'')+((p[1]<pd&&p[1]>pa)||(p[1]>pd&&p[1]<pa)?' upas':'')+'"><b>'+p[0]+b+'</b><small>'+p[2]+'</small></div>').join('');
+      const regla=dif>0?'Bajas '+dif+(dif>1?' escalones':' escalón')+' hacia la derecha: multiplicas por '+(10**dif).toLocaleString('es-MX')+'.':dif<0?'Subes '+(-dif)+(dif<-1?' escalones':' escalón')+' hacia la izquierda: divides entre '+(10**-dif).toLocaleString('es-MX')+'.':'Es la misma unidad.';
+      $('#u-out').innerHTML='<div class="swrap"><div class="ustairs">'+esc_+'</div></div><p class="sbig">'+fmt(v)+' '+u(pd)+' = <b>'+fmt(r)+' '+u(pa)+'</b></p><p class="snote">'+regla+' En notación científica: '+cientifica(r)+' '+u(pa)+'.</p>'; }
+    opts(); mg.addEventListener('change',()=>{opts();calc();}); [de,a].forEach(s=>s.addEventListener('change',calc)); $('#u-v').addEventListener('input',calc); calc();
+  }
+
+  // ================= PF7 Operaciones paso a paso =================
+  function pf7(){
+    area.innerHTML='<p>Escribe una operación combinada y el simulador la resuelve paso a paso, siguiendo la jerarquía.</p>'+
+      '<div class="skeys">'+['7','8','9','+','−','(',')','4','5','6','×','÷','[',']','1','2','3','^','√','{','}','0','.'].map(k=>'<button type="button" data-k="'+k+'">'+k+'</button>').join('')+'<button type="button" data-k="⌫" aria-label="Borrar uno">⌫</button><button type="button" data-k="C">Borrar</button></div>'+
+      '<input id="o-exp" class="sexp" value="20 − 3 × 2^2 + √16 ÷ 2" aria-label="Operación" autocomplete="off">'+
+      '<div class="sex">Ejemplos: '+['2 + 3 × 4','(2 + 3) × 4','18 ÷ 3 × 2','2{3 + [4 − (1 + 1)]}','5 − 12 + 3^2','√49 − 2 × (6 − 9)'].map(e=>'<button type="button" class="sexb">'+e+'</button>').join('')+'</div><div id="o-out" class="sout"></div>';
+    const inp=$('#o-exp');
+    area.querySelectorAll('.skeys button').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.k; if(k==='C')inp.value=''; else if(k==='⌫')inp.value=inp.value.slice(0,-1); else inp.value+=(/[\d.]/.test(k)&&/[\d.]$/.test(inp.value))||k===')'||k===']'||k==='}'||k==='^'||/\^$/.test(inp.value)?k:(inp.value?' ':'')+k; calc();}));
+    area.querySelectorAll('.sexb').forEach(b=>b.addEventListener('click',()=>{inp.value=b.textContent;calc();}));
+    inp.addEventListener('input',calc);
+    function tok(s){
+      s=s.replace(/−|–/g,'-').replace(/[x*·]/gi,'×').replace(/[\/:]/g,'÷').replace(/,/g,'.').replace(/[\[{]/g,'(').replace(/[\]}]/g,')').replace(/\s+/g,'');
+      const t=[];let i=0;
+      while(i<s.length){const c=s[i];
+        if(/[\d.]/.test(c)){let j=i;while(j<s.length&&/[\d.]/.test(s[j]))j++;const v=+s.slice(i,j);if(!isFinite(v))throw new Error('Revisa el número '+s.slice(i,j));t.push({n:v});i=j;continue;}
+        if(c==='-'&&(!t.length||(t[t.length-1].o&&t[t.length-1].o!==')'))){ // menos unario
+          let j=i+1; if(/[\d.]/.test(s[j]||'')){while(j<s.length&&/[\d.]/.test(s[j]))j++; if(s[j]==='^'){t.push({n:-1});t.push({o:'×'});i++;continue;} t.push({n:-(+s.slice(i+1,j))});i=j;continue;}
+          t.push({n:-1});t.push({o:'×'});i++;continue;}
+        if('+-×÷^√()'.includes(c)){ t.push({o:c==='-'?'−':c}); i++; continue; }
+        throw new Error('No reconozco el símbolo “'+c+'”.');
+      }
+      // multiplicación implícita: 2(3) , )(  , )2 , 2√
+      const r=[];t.forEach((x,k)=>{const p=r[r.length-1];if(p&&((p.n!==undefined||p.o===')')&&(x.o==='('||x.o==='√'||(x.n!==undefined&&p.o===')'))))r.push({o:'×'});r.push(x);});
+      return r;
+    }
+    const show=t=>t.map((x,k)=>x.n!==undefined?(x.n<0&&k>0&&t[k-1].o&&t[k-1].o!=='('?'('+M(fmt(x.n))+')':M(fmt(x.n))):x.o==='('?'(':x.o===')'?')':x.o==='√'?'√':x.o==='^'?'^':' '+x.o+' ').join('').replace(/\( /g,'(').replace(/ \)/g,')').replace(/\s+/g,' ').trim().replace(/\^(\d+)/g,(m,d)=>sup(d)).replace(/\^/g,'^');
+    function paso(t){
+      // grupo más interno
+      let i=-1;for(let k=0;k<t.length;k++){if(t[k].o==='(')i=k;if(t[k].o===')'){if(i<0)throw new Error('Sobra un paréntesis de cierre.');break;}}
+      let a=0,b=t.length; if(i>=0){a=i+1;b=t.findIndex((x,k)=>k>i&&x.o===')');if(b<0)throw new Error('Falta cerrar un paréntesis.');}
+      else if(t.some(x=>x.o===')'))throw new Error('Sobra un paréntesis de cierre.');
+      const seg=t.slice(a,b);
+      if(seg.length===1&&i>=0){ const n=t.slice();n.splice(i,3,seg[0]); return [n,'Se quita el paréntesis.']; }
+      if(!seg.length) throw new Error('Hay un paréntesis vacío.');
+      const rep=(k0,k1,v,txt)=>{const n=t.slice();n.splice(a+k0,k1-k0+1,{n:v});return [n,txt];};
+      let k=seg.findIndex((x,j)=>x.o==='√'&&seg[j+1]&&seg[j+1].n!==undefined);
+      if(k>=0){const x=seg[k+1].n;if(x<0)throw new Error('No hay raíz cuadrada de un número negativo en los reales.');return rep(k,k+1,Math.sqrt(x),'Raíz: √'+fmt(x)+' = '+fmt(Math.sqrt(x))+(Number.isInteger(Math.sqrt(x))?'':' (aproximado)')+'.');}
+      k=seg.findIndex((x,j)=>x.o==='^'&&j>0&&seg[j-1].n!==undefined&&seg[j+1]&&seg[j+1].n!==undefined);
+      if(k>=0){const x=seg[k-1].n,y=seg[k+1].n;return rep(k-1,k+1,x**y,'Potencia: '+M(fmt(x))+sup(fmt(y))+' = '+M(fmt(x**y))+'.');}
+      k=seg.findIndex((x,j)=>(x.o==='×'||x.o==='÷')&&j>0&&seg[j-1].n!==undefined&&seg[j+1]&&seg[j+1].n!==undefined);
+      if(k>=0){const x=seg[k-1].n,y=seg[k+1].n,o=seg[k].o;if(o==='÷'&&y===0)throw new Error('No se puede dividir entre cero.');const v=o==='×'?x*y:x/y;return rep(k-1,k+1,v,(o==='×'?'Multiplicación':'División')+' (de izquierda a derecha): '+M(fmt(x))+' '+o+' '+(y<0?'('+M(fmt(y))+')':fmt(y))+' = '+M(fmt(v))+'.');}
+      k=seg.findIndex((x,j)=>(x.o==='+'||x.o==='−')&&j>0&&seg[j-1].n!==undefined&&seg[j+1]&&seg[j+1].n!==undefined);
+      if(k>=0){const x=seg[k-1].n,y=seg[k+1].n,o=seg[k].o;const v=o==='+'?x+y:x-y;return rep(k-1,k+1,v,(o==='+'?'Suma':'Resta')+' (de izquierda a derecha): '+M(fmt(x))+' '+o+' '+(y<0?'('+M(fmt(y))+')':fmt(y))+' = '+M(fmt(v))+'.');}
+      throw new Error('La operación está incompleta: revisa que cada signo tenga un número a cada lado.');
+    }
+    function calc(){ uso('pf7'); const out=$('#o-out');
+      try{ let t=tok(inp.value); if(!t.length) throw new Error('Escribe una operación.');
+        const pasos=[];let guard=0; while(!(t.length===1&&t[0].n!==undefined)){ const [n,txt]=paso(t); t=n; pasos.push([txt,show(t)]); if(++guard>60) throw new Error('La operación es demasiado larga.'); }
+        out.innerHTML='<ol class="osteps"><li class="o0"><span>Operación</span><b>'+esc(show(tok(inp.value)))+'</b></li>'+pasos.map(p=>'<li><span>'+esc(p[0])+'</span><b>'+esc(p[1])+'</b></li>').join('')+'</ol><p class="sbig">Resultado: <b>'+M(fmt(t[0].n))+'</b></p><p class="snote">Orden: 1) paréntesis, corchetes y llaves, de adentro hacia afuera; 2) potencias y raíces; 3) multiplicaciones y divisiones; 4) sumas y restas. En el mismo nivel, de izquierda a derecha.</p>';
+      }catch(e){ out.innerHTML='<p class="serr">'+esc(e.message)+'</p>'; }
+    }
+    calc();
+  }
+
+  const SIM={pf1,pf2,pf3,pf4,pf5,pf6,pf7};
+  sel.innerHTML=Object.keys(SIM).map(k=>'<button type="button" class="qchip" data-pf="'+k.slice(2)+'" data-s="'+k+'" aria-pressed="false"><b>'+k.toUpperCase()+'</b> '+NOM[k].replace(/^PF\d /,'')+'</button>').join('');
+  function abrir(k){ sel.querySelectorAll('.qchip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.s===k?'true':'false')); area.setAttribute('data-pf',k.slice(2)); usados.add(k); SIM[k](); usados.delete(k); }
+  sel.querySelectorAll('.qchip').forEach(c=>c.addEventListener('click',()=>abrir(c.dataset.s)));
+  abrir('pf1');
 })();
 
 </script>
