@@ -783,9 +783,11 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
   const MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   const estado={};
   function hoyStr(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+  const DOCENTE=new URLSearchParams(location.search).get('docente')==='rrm252';
   function aplicar(av){
+    if(DOCENTE){ const n=document.createElement('p'); n.className='note'; n.textContent='Modo docente: todas las autoevaluaciones están abiertas solo en esta dirección. Los alumnos las ven según el calendario.'; box.parentNode.insertBefore(n,box); }
     chips.forEach(c=>{
-      const id=c.dataset.q, v=av[id];
+      const id=c.dataset.q, v=DOCENTE?'abierto':av[id];
       let st='cerrado', txt='Próximamente';
       if(v==='abierto'||(typeof v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v)&&v<=hoyStr())) st='abierto';
       else if(v==='oculto') st='oculto';
