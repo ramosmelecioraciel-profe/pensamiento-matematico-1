@@ -2,17 +2,17 @@
   "pf1": "oculto",
   "pf2": "oculto",
   "pf3": "oculto",
-  "pf4": null,
-  "pf5": null,
-  "pf6": null,
-  "pf7": null,
+  "pf4": "2026-11-06",
+  "pf5": "2026-11-13",
+  "pf6": "2026-11-20",
+  "pf7": "2026-11-27",
   "temas": {
     "pf1": "visto",
     "pf2": "visto",
     "pf3": "visto",
-    "pf4": "proximo",
-    "pf5": "proximo",
-    "pf6": "proximo",
-    "pf7": "proximo"
+    "pf4": "2026-11-06",
+    "pf5": "2026-11-13",
+    "pf6": "2026-11-20",
+    "pf7": "2026-11-27"
   }
 }
