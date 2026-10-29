@@ -1339,7 +1339,7 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
       const L=b*d/gcd(b,d),sn=a*(L/b)+c*(L/d),g=gcd(sn,L),cmp=a*d===c*b?'=':a*d>c*b?'>':'<';
       const simp=(n,dd)=>{const k=gcd(n,dd);return k>1&&n?' = '+(n/k)+'/'+(dd/k):'';};
       $('#f-out').innerHTML='<div class="fbars"><div><b>'+a+'/'+b+'</b>'+bar(a,b,'fa')+'</div><div><b>'+c+'/'+d+'</b>'+bar(c,d,'fb2')+'</div></div>'+
-        '<div class="swrap"><table class="stab sinfo"><tr><th></th><th>'+a+'/'+b+'</th><th>'+c+'/'+d+'</th></tr><tr><th>Decimal</th><td>'+fmt(a/b)+'</td><td>'+fmt(c/d)+'</td></tr><tr><th>Porcentaje</th><td>'+fmt(100*a/b)+'%</td><td>'+fmt(100*c/d)+'%</td></tr><tr><th>Simplificada</th><td>'+(a?(a/gcd(a,b))+'/'+(b/gcd(a,b)):'0')+'</td><td>'+(c?(c/gcd(c,d))+'/'+(d/gcd(c,d)):'0')+'</td></tr></table></div>'+
+        '<div class="swrap"><table class="stab sinfo"><tr><th></th><th>'+a+'/'+b+'</th><th>'+c+'/'+d+'</th></tr><tr><th>Decimal</th><td>'+fmt(a/b)+'</td><td>'+fmt(c/d)+'</td></tr><tr><th>Porcentaje</th><td>'+fmt(Math.round(10000*a/b)/100)+'%</td><td>'+fmt(Math.round(10000*c/d)/100)+'%</td></tr><tr><th>Simplificada</th><td>'+(a?(a/gcd(a,b))+'/'+(b/gcd(a,b)):'0')+'</td><td>'+(c?(c/gcd(c,d))+'/'+(d/gcd(c,d)):'0')+'</td></tr></table></div>'+
         '<p class="snote"><b>'+a+'/'+b+' '+cmp+' '+c+'/'+d+'</b> (en productos cruzados: '+a+' × '+d+' = '+(a*d)+' y '+c+' × '+b+' = '+(c*b)+').</p>'+
         '<p class="snote">Suma: '+a+'/'+b+' + '+c+'/'+d+' = '+(a*L/b)+'/'+L+' + '+(c*L/d)+'/'+L+' = <b>'+sn+'/'+L+simp(sn,L)+'</b></p>'; }
     wireSteps(calc); calc();
