@@ -192,6 +192,26 @@ footer{border-top:6px solid var(--chalk);background:var(--board);color:var(--on-
 .whoami button{font:inherit;font-size:14px;background:none;border:none;padding:0;color:var(--blue);text-decoration:underline;cursor:pointer}
 body.gated{overflow:hidden}
 [hidden]{display:none!important}
+
+.qchips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.qchip{font:inherit;font-size:14px;border:2px solid var(--c);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+.qchip b{color:var(--c)}
+.qchip[aria-pressed="true"]{background:var(--c);color:#fff}.qchip[aria-pressed="true"] b{color:#fff}
+.quiz{border-top:1px solid var(--line);padding-top:6px}
+.quiz h3{font-family:var(--f-display);font-size:20px;margin:12px 0 6px}
+.qq{border:none;margin:0;padding:12px 0;border-bottom:1px solid var(--line)}
+.qq legend{font-weight:700;padding:0;margin-bottom:8px;line-height:1.4}
+.qq legend span{color:var(--c);margin-right:6px}
+.qopt{display:flex;align-items:flex-start;gap:10px;padding:7px 10px;border-radius:8px;cursor:pointer;line-height:1.4}
+.qopt:hover{background:var(--blue-soft)}
+.qopt input{width:18px;height:18px;margin-top:2px;flex:none;accent-color:var(--c)}
+.qopt.right{background:#dff3e6;color:#14532d}.qopt.wrong{background:#fde2e2;color:#7f1d1d}
+.qexp{font-size:14px;color:var(--ink2);margin:6px 0 0 10px}
+.qbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+.qscore{font-family:var(--f-display);font-size:22px;font-weight:700}
+.qmsg{font-size:15px;color:var(--ink2)}
+.qlink{margin:14px 0 0;font-weight:700}
+.qlink a{color:color-mix(in srgb,var(--c),#fff var(--tint))}
 </style>
 </head>
 <body>
@@ -245,6 +265,7 @@ body.gated{overflow:hidden}
     <button class="chip" id="f-cuad" data-f="cuadernillo" aria-pressed="false">Cuadernillos</button>
     <button class="chip" id="f-pres" data-f="presentacion" aria-pressed="false">Presentaciones</button>
     <button class="chip" id="f-prog" data-f="programa" aria-pressed="false">Programa</button>
+    <button class="chip" id="f-auto" data-f="autoeval" aria-pressed="false">Autoevaluaciones</button>
     <button class="chip" id="f-eval" data-f="evaluacion" aria-pressed="false">Evaluaciones</button>
   </div>
 
@@ -274,6 +295,14 @@ body.gated{overflow:hidden}
   </article>
 
   
+  <article id="autoevaluacion" data-k="autoeval">
+    <div class="meta"><span class="tag">5 preguntas</span><span class="tag">autoevaluación</span></div>
+    <h2><a href="#autoevaluacion">Autoevaluaciones</a></h2>
+    <p>Elige un tema y contesta 5 preguntas. Al terminar verás tu calificación y la explicación de cada respuesta. Puedes intentarlo las veces que quieras; el profesor ve tus resultados para saber qué temas reforzar.</p>
+    <div class="qchips" role="group" aria-label="Elegir tema"><button type="button" class="qchip" data-pf="1" data-q="pf1" aria-pressed="false"><b>PF1</b> Lógica matemática</button><button type="button" class="qchip" data-pf="2" data-q="pf2" aria-pressed="false"><b>PF2</b> El concepto de conteo</button><button type="button" class="qchip" data-pf="3" data-q="pf3" aria-pressed="false"><b>PF3</b> Números naturales y enteros</button><button type="button" class="qchip" data-pf="4" data-q="pf4" aria-pressed="false"><b>PF4</b> Fracciones y porcentajes</button><button type="button" class="qchip" data-pf="5" data-q="pf5" aria-pressed="false"><b>PF5</b> Potencias y raíces</button><button type="button" class="qchip" data-pf="6" data-q="pf6" aria-pressed="false"><b>PF6</b> La medición</button><button type="button" class="qchip" data-pf="7" data-q="pf7" aria-pressed="false"><b>PF7</b> Operaciones combinadas</button></div>
+    <div id="quiz" class="quiz" aria-live="polite"><p class="ev-empty">Elige un tema para empezar.</p></div>
+  </article>
+
   <article id="programa" data-k="programa">
     <div class="meta"><time datetime="2026-10-27">27 de octubre de 2026</time><span class="tag">PF1–PF7</span><span class="tag">programa</span></div>
     <h2><a href="#programa">Programa del semestre: propósitos y contenidos formativos</a></h2>
@@ -348,6 +377,7 @@ body.gated{overflow:hidden}
       <a class="btn dl" href="archivos/Operaciones_combinadas_PM1.mp4" download="Video_Operaciones_combinadas.mp4">Descargar video <small>MP4</small></a>
       <a class="btn ghost dl" href="archivos/PF7.pdf" download="Presentacion_PF7_Operaciones_combinadas.pdf">Presentación PF7 <small>PDF</small></a>
     </div>
+      <p class="qlink"><a href="#auto-pf7">✎ Haz la autoevaluación de este tema</a></p>
   </article>
 
   <article id="video-medicion" data-k="video" data-pf="6">
@@ -367,6 +397,7 @@ body.gated{overflow:hidden}
       <a class="btn dl" href="archivos/Medicion_PM1.mp4" download="Video_La_medicion.mp4">Descargar video <small>MP4</small></a>
       <a class="btn ghost dl" href="archivos/PF6.pdf" download="Presentacion_PF6_La_medicion.pdf">Presentación PF6 <small>PDF</small></a>
     </div>
+      <p class="qlink"><a href="#auto-pf6">✎ Haz la autoevaluación de este tema</a></p>
   </article>
 
   <article id="video-potencias-raices" data-k="video" data-pf="5">
@@ -386,6 +417,7 @@ body.gated{overflow:hidden}
       <a class="btn dl" href="archivos/Potencias_raices_PM1.mp4" download="Video_Potencias_y_raices.mp4">Descargar video <small>MP4</small></a>
       <a class="btn ghost dl" href="archivos/PF5.pdf" download="Presentacion_PF5_Potencias_y_raices.pdf">Presentación PF5 <small>PDF</small></a>
     </div>
+      <p class="qlink"><a href="#auto-pf5">✎ Haz la autoevaluación de este tema</a></p>
   </article>
 
   <article id="video-naturales-enteros" data-k="video" data-pf="3">
@@ -405,6 +437,7 @@ body.gated{overflow:hidden}
       <a class="btn dl" href="archivos/Naturales_enteros_PM1.mp4" download="Video_Naturales_y_enteros.mp4">Descargar video <small>MP4</small></a>
       <a class="btn ghost dl" href="archivos/PF3.pdf" download="Presentacion_PF3_Naturales_y_enteros.pdf">Presentación PF3 <small>PDF</small></a>
     </div>
+      <p class="qlink"><a href="#auto-pf3">✎ Haz la autoevaluación de este tema</a></p>
   </article>
 
   <article id="video-conteo" data-k="video" data-pf="2">
@@ -424,6 +457,7 @@ body.gated{overflow:hidden}
       <a class="btn dl" href="archivos/Conteo_PM1.mp4" download="Video_Conteo.mp4">Descargar video <small>MP4</small></a>
       <a class="btn ghost dl" href="archivos/PF2.pdf" download="Presentacion_PF2_Conteo.pdf">Presentación PF2 <small>PDF</small></a>
     </div>
+      <p class="qlink"><a href="#auto-pf2">✎ Haz la autoevaluación de este tema</a></p>
   </article>
 
   <article id="video-fracciones" data-k="video" data-pf="4">
@@ -447,6 +481,7 @@ body.gated{overflow:hidden}
       <a class="btn dl" href="archivos/Fracciones_porcentajes_PM1.mp4" download="Video_Fracciones_y_porcentajes.mp4">Descargar video <small>5 MB</small></a>
       <a class="btn ghost dl" href="archivos/PF4.pdf" download="Presentacion_PF4_Fracciones_y_porcentajes.pdf">Presentación PF4 <small>PDF</small></a>
     </div>
+      <p class="qlink"><a href="#auto-pf4">✎ Haz la autoevaluación de este tema</a></p>
   </article>
 
   <article id="video-proposiciones" data-k="video" data-pf="1">
@@ -468,6 +503,7 @@ body.gated{overflow:hidden}
       <a class="btn dl" href="archivos/Proposiciones_logicas_PM1.mp4" download="Video_Proposiciones_logicas.mp4">Descargar video <small>4.5 MB</small></a>
       <a class="btn ghost dl" href="archivos/PF1.pdf" download="Presentacion_PF1_Logica_matematica.pdf">Presentación PF1 <small>PDF</small></a>
     </div>
+      <p class="qlink"><a href="#auto-pf1">✎ Haz la autoevaluación de este tema</a></p>
   </article>
 
   <article id="cuadernillo-paso-a-paso" data-k="cuadernillo">
@@ -644,6 +680,56 @@ body.gated{overflow:hidden}
   const rn=document.getElementById('reg-nombre'), rg=document.getElementById('reg-grupo');
   if(rn&&rg&&yo){ rn.value=rn.value||yo.nombre; rg.value=rg.value||yo.grupo; }
   mostrar();
+})();
+</script>
+
+<script>
+(function(){
+  const URL='https://script.google.com/macros/s/AKfycbwHqdoeheOWDYq9cho9NqCHgZV3_IqR1XM55QhPgdY1jZ782HI7Cm27zMWuopqCCfnC5w/exec', ASIG='PM1', KEY='alumno_pm252';
+  const Q=[{"id": "pf1", "pf": 1, "t": "Lógica matemática", "n": "PF1", "q": [{"p": "¿Cuál de estas frases es una proposición?", "o": ["¿Qué hora es?", "¡Cierra la puerta!", "El 9 es un número par.", "x + 2 = 5"], "c": 2, "e": "Es una afirmación que se puede calificar: es falsa. Una proposición falsa también es proposición."}, {"p": "Si p es verdadera y q es falsa, ¿cuánto vale p ∧ q?", "o": ["Verdadera", "Falsa", "Depende del contexto", "No se puede saber"], "c": 1, "e": "La conjunción (y) solo es verdadera cuando las dos son verdaderas."}, {"p": "Si p es verdadera y q es falsa, ¿cuánto vale p ∨ q?", "o": ["Verdadera", "Falsa", "Depende del contexto", "No se puede saber"], "c": 0, "e": "La disyunción (o) es verdadera si al menos una es verdadera."}, {"p": "La condicional p → q solo es falsa cuando…", "o": ["p es F y q es V", "p y q son falsas", "p es V y q es F", "p y q son verdaderas"], "c": 2, "e": "Una promesa solo se rompe si se cumple la condición (p) y no pasa lo prometido (q)."}, {"p": "¿Cómo se simboliza “no p”?", "o": ["p ∧ q", "¬p", "p → q", "p ∨ q"], "c": 1, "e": "¬ es la negación: cambia el valor de verdad."}]}, {"id": "pf2", "pf": 2, "t": "El concepto de conteo", "n": "PF2", "q": [{"p": "¿En qué base contaban los mayas?", "o": ["5", "10", "20", "60"], "c": 2, "e": "Los mayas usaban un sistema vigesimal (base 20)."}, {"p": "En numeración maya, una barra y tres puntos valen…", "o": ["4", "8", "13", "53"], "c": 1, "e": "Barra = 5 y cada punto = 1: 5 + 3 = 8."}, {"p": "¿Quién difundió en Europa el sistema indoarábigo con el Liber Abaci?", "o": ["Al-Juarismi", "Leonardo de Pisa (Fibonacci)", "Pitágoras", "Euclides"], "c": 1, "e": "Leonardo de Pisa lo publicó en 1202."}, {"p": "“5”, “V” y “|||||” son…", "o": ["Tres números distintos", "Numerales distintos del mismo número", "Números naturales distintos", "Solo “5” es un número"], "c": 1, "e": "El número es la idea de cantidad; los numerales son sus símbolos."}, {"p": "En 4 072, ¿cuánto vale el 7?", "o": ["7", "70", "700", "7 000"], "c": 1, "e": "Está en el lugar de las decenas: 7 × 10 = 70."}]}, {"id": "pf3", "pf": 3, "t": "Números naturales y enteros", "n": "PF3", "q": [{"p": "−9 + 4 =", "o": ["−13", "−5", "5", "13"], "c": 1, "e": "Signos distintos: se restan (9 − 4 = 5) y queda el signo del mayor (−)."}, {"p": "(−6)(−3) =", "o": ["−18", "−9", "9", "18"], "c": 3, "e": "Menos por menos da más: 6 × 3 = 18."}, {"p": "¿Qué propiedad es 5(3 + 2) = 15 + 10?", "o": ["Conmutativa", "Asociativa", "Distributiva", "Cerradura"], "c": 2, "e": "Se multiplica el 5 por cada sumando."}, {"p": "La factorización en primos de 36 es…", "o": ["4 × 9", "2² × 3²", "6²", "2 × 18"], "c": 1, "e": "36 = 2 × 2 × 3 × 3; las otras opciones usan números que no son primos."}, {"p": "El mínimo común múltiplo (MCM) de 4 y 6 es…", "o": ["2", "12", "24", "10"], "c": 1, "e": "Múltiplos de 4: 4, 8, 12…; de 6: 6, 12… El primero en común es 12."}]}, {"id": "pf4", "pf": 4, "t": "Fracciones y porcentajes", "n": "PF4", "q": [{"p": "¿Cuánto es 3/4 de 40?", "o": ["10", "30", "34", "120"], "c": 1, "e": "40 ÷ 4 = 10 y 10 × 3 = 30."}, {"p": "¿Qué fracción es equivalente a 2/3?", "o": ["3/4", "4/9", "8/12", "2/6"], "c": 2, "e": "2 × 4 = 8 y 3 × 4 = 12."}, {"p": "1/2 + 1/4 =", "o": ["2/6", "1/6", "3/4", "2/4"], "c": 2, "e": "1/2 = 2/4, y 2/4 + 1/4 = 3/4. No se suman los denominadores."}, {"p": "¿Cuánto es el 25% de 80?", "o": ["8", "20", "25", "32"], "c": 1, "e": "25% = 0.25 y 80 × 0.25 = 20."}, {"p": "Si 4 cuadernos cuestan $120, ¿cuánto cuestan 6?", "o": ["$80", "$150", "$180", "$720"], "c": 2, "e": "Proporción directa: uno cuesta $30 y 6 × 30 = $180."}]}, {"id": "pf5", "pf": 5, "t": "Potencias y raíces", "n": "PF5", "q": [{"p": "3⁴ =", "o": ["12", "64", "81", "7"], "c": 2, "e": "3 × 3 × 3 × 3 = 81."}, {"p": "2³ · 2⁵ =", "o": ["2⁸", "2¹⁵", "4⁸", "2²"], "c": 0, "e": "Misma base al multiplicar: se suman los exponentes (3 + 5 = 8)."}, {"p": "5⁰ =", "o": ["0", "1", "5", "No existe"], "c": 1, "e": "Todo número distinto de cero elevado a 0 es 1."}, {"p": "2⁻² =", "o": ["−4", "−1/4", "1/4", "4"], "c": 2, "e": "El exponente negativo es el inverso: 1/2² = 1/4."}, {"p": "³√125 =", "o": ["5", "25", "41.6", "375"], "c": 0, "e": "5 × 5 × 5 = 125."}]}, {"id": "pf6", "pf": 6, "t": "La medición", "n": "PF6", "q": [{"p": "¿Cuál es la unidad de masa del Sistema Internacional?", "o": ["Gramo", "Libra", "Kilogramo", "Tonelada"], "c": 2, "e": "El SI usa el kilogramo (kg)."}, {"p": "3.5 km son…", "o": ["35 m", "350 m", "3 500 m", "35 000 m"], "c": 2, "e": "1 km = 1 000 m, así que 3.5 × 1 000 = 3 500 m."}, {"p": "0.00042 en notación científica es…", "o": ["4.2 × 10⁴", "4.2 × 10⁻⁴", "42 × 10⁻⁵", "0.42 × 10⁻³"], "c": 1, "e": "Se recorre el punto 4 lugares a la derecha: exponente −4, con una cifra del 1 al 9 antes del punto."}, {"p": "6 × 10⁵ es igual a…", "o": ["60 000", "600 000", "6 000 000", "30"], "c": 1, "e": "Se recorre el punto 5 lugares: 600 000."}, {"p": "En un mapa a escala 1 : 100 000, 3 cm son en la realidad…", "o": ["3 m", "300 m", "3 km", "30 km"], "c": 2, "e": "3 × 100 000 = 300 000 cm = 3 000 m = 3 km."}]}, {"id": "pf7", "pf": 7, "t": "Operaciones combinadas", "n": "PF7", "q": [{"p": "6 + 4 × 2 =", "o": ["20", "14", "12", "16"], "c": 1, "e": "Primero se multiplica: 4 × 2 = 8, y luego 6 + 8 = 14."}, {"p": "(6 + 4) × 2 =", "o": ["14", "12", "20", "16"], "c": 2, "e": "Primero el paréntesis: 10 × 2 = 20."}, {"p": "18 ÷ 3 × 2 =", "o": ["3", "12", "9", "6"], "c": 1, "e": "Mismo nivel, de izquierda a derecha: 18 ÷ 3 = 6 y 6 × 2 = 12."}, {"p": "5 − 12 =", "o": ["7", "−7", "17", "−17"], "c": 1, "e": "Restar es sumar el opuesto: 5 + (−12) = −7."}, {"p": "3² + √16 ÷ 2 =", "o": ["6.5", "11", "13", "10"], "c": 1, "e": "Potencias y raíces: 9 + 4 ÷ 2; luego la división: 9 + 2 = 11."}]}];
+  const box=document.getElementById('quiz'), chips=[...document.querySelectorAll('.qchip')];
+  const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function yo(){try{return JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){return null;}}
+  function enviar(det){
+    const a=yo(); if(!a) return;
+    const b=new URLSearchParams({tipo:'acceso',nombre:a.nombre,grupo:a.grupo,asignatura:ASIG,accion:'Autoevaluación',detalle:det});
+    try{ if(navigator.sendBeacon&&navigator.sendBeacon(URL,b)) return; }catch(e){}
+    fetch(URL,{method:'POST',mode:'no-cors',body:b,keepalive:true}).catch(()=>{});
+  }
+  function abrir(id,scroll){
+    const d=Q.find(x=>x.id===id); if(!d) return;
+    chips.forEach(c=>c.setAttribute('aria-pressed',c.dataset.q===id?'true':'false'));
+    box.setAttribute('data-pf',d.pf);
+    box.innerHTML='<h3>'+esc(d.n+' · '+d.t)+'</h3><form id="qform" novalidate>'+d.q.map((q,i)=>
+      '<fieldset class="qq" data-i="'+i+'"><legend><span>'+(i+1)+'.</span>'+esc(q.p)+'</legend>'+
+      q.o.map((o,j)=>'<label class="qopt"><input type="radio" name="q'+i+'" value="'+j+'"><span>'+esc(o)+'</span></label>').join('')+
+      '</fieldset>').join('')+
+      '<div class="qbar"><button class="btn" type="submit" style="background:var(--c);color:#fff">Calificar</button><span class="qmsg" id="qmsg"></span></div></form>';
+    const f=document.getElementById('qform');
+    f.addEventListener('submit',ev=>{
+      ev.preventDefault();
+      const r=d.q.map((q,i)=>{const x=f.querySelector('input[name=q'+i+']:checked');return x?+x.value:null;});
+      const faltan=r.map((v,i)=>v===null?i+1:0).filter(Boolean);
+      if(faltan.length){document.getElementById('qmsg').textContent='Te falta contestar: '+faltan.join(', ')+'.';return;}
+      let ok=0; const fallos=[];
+      d.q.forEach((q,i)=>{
+        const fs=f.querySelector('.qq[data-i="'+i+'"]'), labels=fs.querySelectorAll('.qopt');
+        labels[q.c].classList.add('right');
+        if(r[i]===q.c) ok++; else { labels[r[i]].classList.add('wrong'); fallos.push(i+1); }
+        fs.querySelectorAll('input').forEach(x=>x.disabled=true);
+        fs.insertAdjacentHTML('beforeend','<p class="qexp">'+(r[i]===q.c?'✔ ':'✘ ')+esc(q.e)+'</p>');
+      });
+      const bar=f.querySelector('.qbar');
+      const nota=ok===5?'¡Excelente!':ok>=3?'Vas bien; repasa las que fallaste.':'Repasa el video y la presentación del tema e inténtalo otra vez.';
+      bar.innerHTML='<span class="qscore">'+ok+' / 5</span><span class="qmsg">'+nota+'</span><button class="btn ghost" type="button" id="qagain" style="color:var(--c);border-color:var(--c);background:transparent">Intentar de nuevo</button>';
+      document.getElementById('qagain').addEventListener('click',()=>abrir(id,true));
+      enviar(d.n+' '+d.t+' · '+ok+'/5'+(fallos.length?' · falló: '+fallos.join(', '):''));
+    });
+    if(scroll) document.getElementById('autoevaluacion').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  chips.forEach(c=>c.addEventListener('click',()=>abrir(c.dataset.q,false)));
+  function porHash(){ const m=location.hash.match(/^#auto-(\w+)$/); if(m){ const all=document.getElementById('f-all'); if(all) all.click(); abrir(m[1],true); } }
+  window.addEventListener('hashchange',porHash); porHash();
 })();
 </script>
 </body>
