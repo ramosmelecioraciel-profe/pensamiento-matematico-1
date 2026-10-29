@@ -384,6 +384,10 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
 .itoast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);z-index:60;background:var(--board);color:#fff;border:3px solid var(--chalk);border-radius:14px;padding:12px 18px;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:transform .35s;max-width:calc(100vw - 32px)}
 .itoast.show{transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){.itoast{transition:none}}
+.iextra{display:flex;flex-direction:column;align-items:center;background:var(--chalk);color:#1b2340;border-radius:10px;padding:6px 14px}
+.iextra span{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.iextra b{font-family:var(--f-display);font-size:26px}
+.iscale td,.iscale th{text-align:center}
 </style>
 </head>
 <body>
@@ -475,7 +479,8 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
     <div class="meta"><span class="tag">mi avance</span><span class="tag">insignias</span></div>
     <h2><a href="#insignias">Mis insignias</a></h2>
     <p>Gana medallas por cada propósito formativo: <b>bronce</b> por ver el video, <b>plata</b> por practicar y <b>oro</b> por dominar el tema. También hay insignias especiales por constancia.</p>
-    <p class="note"><b>Actividad extra:</b> tus insignias cuentan como puntos adicionales en tu calificación. Son voluntarias: no restan, solo suman.</p>
+    <p class="note"><b>Actividad extra:</b> tus insignias suman puntos adicionales a tu calificación del parcial. Son voluntarias: no restan, solo suman.</p>
+    <div class="swrap"><table class="stab sinfo iscale"><tr><th>Puntos de insignias</th><th>Valor extra</th></tr><tr><td>10 a 19</td><td>+0.2</td></tr><tr><td>20 a 29</td><td>+0.4</td></tr><tr><td>30 a 39</td><td>+0.6</td></tr><tr><td>40 a 50</td><td>+1.0</td></tr></table></div>
     <div id="ins-area" class="ins"></div>
   </article>
 
@@ -1545,14 +1550,15 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
   }
   function puntos(){ return Object.keys(P.ins).reduce((s,id)=>s+info(id).pts,0); }
   const nivelTxt=pts=>pts>=40?'Experto':pts>=25?'Avanzado':pts>=10?'En progreso':'Inicial';
+  const extra=pts=>pts>=40?'+1.0':pts>=30?'+0.6':pts>=20?'+0.4':pts>=10?'+0.2':'+0';
   // ---- interfaz ----
   const medalla=(n,ok,t)=>'<span class="med '+n+(ok?'':' off')+'" title="'+t+'"><span>'+n[0].toUpperCase()+'</span></span>';
   function pintar(){
     const a=yo(), box=document.getElementById('ins-area'), side=document.getElementById('ins-side'); const pts=puntos(), tot=Object.keys(P.ins).length;
-    if(side) side.innerHTML='<p class="lbl">Mi avance</p>'+(a?'<strong>'+pts+' de '+MAX+' puntos</strong><div class="ibar"><i style="width:'+Math.round(100*pts/MAX)+'%"></i></div><p class="ev-none" style="margin:.2em 0">'+tot+' insignia'+(tot===1?'':'s')+' · Nivel '+nivelTxt(pts)+'</p><a href="#insignias">Ver mis insignias</a>':'<p class="ev-none">Entra con tu nombre para ganar insignias.</p>');
+    if(side) side.innerHTML='<p class="lbl">Mi avance</p>'+(a?'<strong>'+pts+' de '+MAX+' puntos</strong><div class="ibar"><i style="width:'+Math.round(100*pts/MAX)+'%"></i></div><p class="ev-none" style="margin:.2em 0">'+tot+' insignia'+(tot===1?'':'s')+' · Nivel '+nivelTxt(pts)+'<br>Valor extra: <b>'+extra(pts)+'</b></p><a href="#insignias">Ver mis insignias</a>':'<p class="ev-none">Entra con tu nombre para ganar insignias.</p>');
     if(!box) return;
     if(!a){ box.innerHTML='<p class="ev-empty">Escribe tu nombre al entrar al blog para empezar a ganar insignias.</p>'; return; }
-    let h='<div class="ihead"><div><span class="ipts">'+pts+'</span><span class="imax">/ '+MAX+' puntos</span></div><div><b>Nivel '+nivelTxt(pts)+'</b><br><span class="snote">'+a.nombre+' · '+a.grupo+'</span></div></div><div class="ibar big"><i style="width:'+Math.round(100*pts/MAX)+'%"></i></div>';
+    let h='<div class="ihead"><div><span class="ipts">'+pts+'</span><span class="imax">/ '+MAX+' puntos</span></div><div class="iextra"><span>Valor extra</span><b>'+extra(pts)+'</b></div><div><b>Nivel '+nivelTxt(pts)+'</b><br><span class="snote">'+a.nombre+' · '+a.grupo+'</span></div></div><div class="ibar big"><i style="width:'+Math.round(100*pts/MAX)+'%"></i></div>';
     h+='<div class="igrid">'+Object.keys(PF).map(k=>{ const n=k.slice(2);
       return '<div class="icard" data-pf="'+n+'"><div class="ict"><span class="pf-n">'+k.toUpperCase()+'</span> '+PF[k]+'</div><div class="imeds">'+NIV.map(x=>medalla(x[0],P.ins[x[0]+'_'+k],x[1]+': '+x[3])).join('')+'</div>'+
         '<ul class="icrit">'+NIV.map(x=>'<li class="'+(P.ins[x[0]+'_'+k]?'ok':'')+'">'+(P.ins[x[0]+'_'+k]?'✔ ':'')+'<b>'+x[1]+'</b> ('+x[2]+' pt'+(x[2]>1?'s':'')+'): '+x[3]+'</li>').join('')+'</ul></div>'; }).join('')+'</div>';
