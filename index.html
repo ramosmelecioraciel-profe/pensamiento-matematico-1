@@ -66,6 +66,7 @@ article li{margin:.2em 0}
 .cover{margin:16px 0;border:1px solid var(--line);border-radius:6px;display:block;max-width:100%;height:auto}
 .note{font-size:15px;background:var(--blue-soft);border-radius:6px;padding:10px 14px;margin:12px 0;max-width:66ch}
 .math{font-family:var(--f-mono);font-size:.92em;white-space:nowrap}
+#vprof{position:sticky;top:0;z-index:50;background:#1e2a6e;color:#fff;font-weight:700;font-size:.9em;text-align:center;padding:8px 10px}
 #avisos-prof{display:grid;gap:10px;margin:14px 0 16px;color:#1d2340}
 .aviso{border:2px solid #f5b301;background:#fff8e1;border-radius:14px;padding:12px 14px;transition:opacity .3s,transform .3s}
 .aviso.av-fin{opacity:0;transform:scale(.97)}
@@ -861,6 +862,16 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
 <script>
 // AVISOS Y TEMAS publicados por el profesor desde su app de Seguimiento
 (function(){
+  // ?vista=profe: el profesor revisa el blog sin registrarse ni dejar registros
+  const PREV=new URLSearchParams(location.search).get('vista')==='profe';
+  window.VISTA_PROFE=PREV;
+  if(PREV){
+    const LOG='script.google.com/macros/s/AKfycbwHq';
+    const f0=window.fetch.bind(window); window.fetch=(u,o)=>String(u).includes(LOG)?Promise.resolve(new Response('')):f0(u,o);
+    if(navigator.sendBeacon){const b0=navigator.sendBeacon.bind(navigator); navigator.sendBeacon=(u,d)=>String(u).includes(LOG)?true:b0(u,d);}
+    const bar=()=>{if(document.getElementById('vprof'))return;const d=document.createElement('div');d.id='vprof';d.textContent='👁 Vista del profesor: ves todos los avisos vigentes; aquí no se registra nada.';document.body.prepend(d);};
+    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bar);else bar();
+  }
   const SEG='https://script.google.com/macros/s/AKfycbwpaY6ndhw89QL0dPuYBpIy--TbQ8U3B5TGFP6oGA7W4cfXP_XYBMuJPhAqFnZGdW2wFg/exec';   // dirección /exec de la Hoja de Seguimiento del profesor (solo da avisos vigentes y temas)
   let pr=null;
   window.blogPub=()=>pr||(pr=!SEG?Promise.resolve(null):Promise.race([
@@ -878,12 +889,13 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
     blogPub().then(d=>{
       const box=document.getElementById('avisos-prof'); if(!box) return;
       if(!d||!d.ok){box.hidden=true;return;}
-      const a=yo(), g=a?gn(a.grupo):'', ok=leidos();
+      const a=PREV?null:yo(), g=a?gn(a.grupo):'', ok=PREV?[]:leidos();
       const L=(d.avisos||[]).filter(x=>!ok.includes(x.id)&&(!x.grupos||!x.grupos.length||!g||x.grupos.some(y=>gn(y)===g)));
       box.hidden=!L.length;
       box.innerHTML=L.map(x=>{const arch=/archivos\//.test(x.enlace||''),href=esc(x.enlace||'');
-        return '<div class="aviso" data-id="'+esc(x.id)+'"><div class="av-h">📢 Aviso del profesor</div><b class="av-t">'+esc(x.titulo)+'</b>'+(x.msg?'<p>'+esc(x.msg).replace(/\n/g,'<br>')+'</p>':'')+
+        return '<div class="aviso" data-id="'+esc(x.id)+'"><div class="av-h">📢 Aviso del profesor'+(PREV?' · '+(x.grupos&&x.grupos.length?'grupos '+x.grupos.map(esc).join(', '):'todos los grupos')+' · hasta el '+esc(x.hasta.split('-').reverse().slice(0,2).join('/')):'')+'</div><b class="av-t">'+esc(x.titulo)+'</b>'+(x.msg?'<p>'+esc(x.msg).replace(/\n/g,'<br>')+'</p>':'')+
           '<div class="av-b">'+(x.enlace?'<a class="btn" href="'+href+'"'+(arch?' download':(/^https?:/.test(x.enlace)?' target="_blank" rel="noopener"':''))+'>'+(arch?'⬇️ Descargar':'Abrir')+'</a>':'')+'<button type="button" class="btn ghost av-ok">✔ Enterado</button></div></div>';}).join('');
+      if(PREV){ if(!L.length){box.hidden=false;box.innerHTML='<div class="aviso"><div class="av-h">👁 Vista del profesor</div><p>No hay avisos visibles hoy. Los avisos “Programados” aparecen aquí a partir de su fecha.</p></div>';} box.querySelectorAll('.av-ok').forEach(b=>b.addEventListener('click',()=>alert('Vista del profesor: aquí el botón no registra nada.'))); return; }
       box.querySelectorAll('.av-ok').forEach(b=>b.addEventListener('click',()=>{const el=b.closest('.aviso'),id=el.dataset.id,t=el.querySelector('.av-t').textContent;
         enviar(id+' · '+t); const k=leidos(); k.push(id); try{localStorage.setItem('avisos_ok_'+ASIG,JSON.stringify(k.slice(-60)));}catch(e){}
         el.classList.add('av-fin'); setTimeout(()=>{el.remove(); if(!box.querySelector('.aviso')) box.hidden=true;},350);}));
@@ -983,6 +995,7 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
     if(ya!==hoy){ enviar('Entró al blog',location.hash.replace('#','')); try{sessionStorage.setItem(k,hoy);}catch(e){} }
   }
   function mostrar(){
+    if(window.VISTA_PROFE){ gate.hidden=true; document.body.classList.remove('gated'); who.hidden=true; return; }
     if(yo){ gate.hidden=true; document.body.classList.remove('gated'); who.hidden=false; whoN.textContent=yo.nombre+' ('+yo.grupo+')'; entrada(); }
     else { gate.hidden=false; document.body.classList.add('gated'); who.hidden=true; setTimeout(()=>document.getElementById('who-nombre').focus(),50); }
   }
