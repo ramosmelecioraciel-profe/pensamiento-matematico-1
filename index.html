@@ -448,7 +448,7 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
 <p class="whoami" id="whoami" hidden>Entraste como <b id="whoami-n"></b> · <button type="button" id="whoami-x">No soy yo</button></p>
 <div class="wrap cols">
 <main>
-  <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones"><button type="button" role="tab" class="tab" id="tab-videos" data-tab="videos" aria-selected="false">Videos</button><button type="button" role="tab" class="tab" id="tab-autoeval" data-tab="autoeval" aria-selected="false">Autoevaluación</button><button type="button" role="tab" class="tab" id="tab-insignias" data-tab="insignias" aria-selected="false">Insignias</button><button type="button" role="tab" class="tab" id="tab-simuladores" data-tab="simuladores" aria-selected="false">Simuladores</button><button type="button" role="tab" class="tab" id="tab-practica" data-tab="practica" aria-selected="false">Práctica</button><button type="button" role="tab" class="tab" id="tab-fechas" data-tab="fechas" aria-selected="false">Fechas</button><button type="button" role="tab" class="tab" id="tab-programa" data-tab="programa" aria-selected="false">Programa</button><button type="button" role="tab" class="tab" id="tab-materiales" data-tab="materiales" aria-selected="false">Materiales</button></nav>
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones"><button type="button" role="tab" class="tab" id="tab-videos" data-tab="videos" aria-selected="false">Videos</button><button type="button" role="tab" class="tab" id="tab-autoeval" data-tab="autoeval" aria-selected="false">Autoevaluación</button><button type="button" role="tab" class="tab" id="tab-insignias" data-tab="insignias" aria-selected="false">Insignias</button><button type="button" role="tab" class="tab" id="tab-simuladores" data-tab="simuladores" aria-selected="false">Simuladores</button><button type="button" role="tab" class="tab" id="tab-practica" data-tab="practica" aria-selected="false">Práctica</button><button type="button" role="tab" class="tab" id="tab-fechas" data-tab="fechas" aria-selected="false">Fechas</button><button type="button" role="tab" class="tab" id="tab-programa" data-tab="programa" aria-selected="false">Programa</button><button type="button" role="tab" class="tab" id="tab-cuadernillos" data-tab="cuadernillos" aria-selected="false">Cuadernillos</button><button type="button" role="tab" class="tab" id="tab-materiales" data-tab="materiales" aria-selected="false">Materiales</button></nav>
 
   <div class="feed">
   <article id="avisos" data-k="evaluacion" class="pinned">
@@ -729,7 +729,6 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
       <a class="btn ghost dl" href="archivos/PF5.pdf" download="Presentacion_PF5_Potencias_y_raices.pdf">Presentación PF5 <small>PDF</small></a>
       <a class="btn ghost dl" href="archivos/Leyes_exponentes_radicales_PM1.pdf" download="Tabla_leyes_exponentes_y_radicales.pdf">Tabla de leyes de exponentes y radicales <small>PDF</small></a>
     </div>
-    <p class="note">📌 <b>Tabla de leyes de exponentes y radicales:</b> las 13 leyes de los exponentes y las 11 de los radicales, cada una con su regla, qué significa en palabras, un ejemplo resuelto y el error más común. Incluye ejemplos que combinan varias leyes y una tabla de cuadrados, cubos y potencias de 2. Descárgala, imprímela y pégala en tu cuaderno.</p>
       <p class="qlink"><a href="#auto-pf5">✎ Haz la autoevaluación de este tema</a></p>
   </article>
 
@@ -771,6 +770,15 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
       <a class="btn ghost dl" href="archivos/PF7.pdf" download="Presentacion_PF7_Operaciones_combinadas.pdf">Presentación PF7 <small>PDF</small></a>
     </div>
       <p class="qlink"><a href="#auto-pf7">✎ Haz la autoevaluación de este tema</a></p>
+  </article>
+
+  <article id="tabla-leyes" data-k="material" data-pf="5">
+    <div class="meta"><time datetime="2026-11-27">27 de noviembre de 2026</time><span class="tag pfc">PF5</span><span class="tag">tabla</span><span class="tag">formulario</span></div>
+    <h2><a href="#tabla-leyes">Tabla de leyes de los exponentes y de los radicales</a></h2>
+    <p>Las 13 leyes de los exponentes y las 11 de los radicales en dos hojas. Cada ley trae su regla, qué significa en palabras, un ejemplo resuelto y el error más común que debes evitar. Incluye ejemplos que combinan varias leyes y una tabla de cuadrados, cubos y potencias de 2.</p>
+    <img class="cover" src="archivos/cov_leyes.jpg" alt="Primera hoja de la tabla de leyes de los exponentes" width="660" height="510" loading="lazy">
+    <p>Imprímela y pégala en tu cuaderno, o tenla abierta en el celular mientras resuelves.</p>
+    <div class="actions"><a class="btn dl" href="archivos/Leyes_exponentes_radicales_PM1.pdf" download="Tabla_leyes_exponentes_y_radicales.pdf">Descargar PDF <small>2 hojas</small></a><a class="btn ghost" href="#video-potencias-raices">Ver el video del tema</a></div>
   </article>
 
   <article id="cuadernillo-paso-a-paso" data-k="cuadernillo">
@@ -1133,7 +1141,7 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
 
 <script>
 (function(){
-  const MAP={"video": "videos", "autoeval": "autoeval", "insignias": "insignias", "simuladores": "simuladores", "practica": "practica", "evaluacion": "fechas", "calendario": "fechas", "programa": "programa", "cuadernillo": "materiales", "presentacion": "materiales", "aviso": "materiales"}, INTRO={"videos": "Un video por propósito formativo, en orden. Las etiquetas indican si el tema ya se vio o cuándo se verá en clase.", "insignias": "Tu avance en medallas: bronce, plata y oro por cada propósito formativo.", "simuladores": "Herramientas interactivas para ver cómo funciona cada tema: cambia los valores y observa.", "practica": "Ejercicios nuevos cada vez, con revisión al momento. Practica cualquier tema las veces que quieras.", "autoeval": "Contesta 5 preguntas del tema que acabamos de ver. Se abren conforme avanzamos en clase.", "fechas": "Días sin clases, fechas de evaluación y registro para recibir recordatorios por correo.", "programa": "Propósitos y contenidos formativos del programa de Pensamiento Matemático I.", "materiales": "Cuadernillos y presentaciones para descargar."};
+  const MAP={"video": "videos", "autoeval": "autoeval", "insignias": "insignias", "simuladores": "simuladores", "practica": "practica", "evaluacion": "fechas", "calendario": "fechas", "programa": "programa", "cuadernillo": "cuadernillos", "material": "materiales", "presentacion": "materiales", "aviso": "materiales"}, INTRO={"videos": "Un video por propósito formativo, en orden. Las etiquetas indican si el tema ya se vio o cuándo se verá en clase.", "insignias": "Tu avance en medallas: bronce, plata y oro por cada propósito formativo.", "simuladores": "Herramientas interactivas para ver cómo funciona cada tema: cambia los valores y observa.", "practica": "Ejercicios nuevos cada vez, con revisión al momento. Practica cualquier tema las veces que quieras.", "autoeval": "Contesta 5 preguntas del tema que acabamos de ver. Se abren conforme avanzamos en clase.", "fechas": "Días sin clases, fechas de evaluación y registro para recibir recordatorios por correo.", "programa": "Propósitos y contenidos formativos del programa de Pensamiento Matemático I.", "cuadernillos": "Los cuadernillos del semestre para descargar e imprimir.", "materiales": "Presentaciones de clase, tablas y formularios para descargar. Aquí se irán agregando más materiales."};
   const tabs=[...document.querySelectorAll('.tab')], feed=document.querySelector('.feed');
   const arts=[...feed.querySelectorAll(':scope > article')];
   arts.forEach(a=>{ a.dataset.tab=MAP[a.dataset.k]||tabs[0].dataset.tab; });
