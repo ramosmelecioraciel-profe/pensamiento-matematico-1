@@ -861,7 +861,7 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
 <script>
 // AVISOS Y TEMAS publicados por el profesor desde su app de Seguimiento
 (function(){
-  const SEG='';   // dirección /exec de la Hoja de Seguimiento del profesor (solo da avisos vigentes y temas)
+  const SEG='https://script.google.com/macros/s/AKfycbwpaY6ndhw89QL0dPuYBpIy--TbQ8U3B5TGFP6oGA7W4cfXP_XYBMuJPhAqFnZGdW2wFg/exec';   // dirección /exec de la Hoja de Seguimiento del profesor (solo da avisos vigentes y temas)
   let pr=null;
   window.blogPub=()=>pr||(pr=!SEG?Promise.resolve(null):Promise.race([
     fetch(SEG+'?accion=blog&asig=PM1',{cache:'no-store'}).then(r=>r.json()),
