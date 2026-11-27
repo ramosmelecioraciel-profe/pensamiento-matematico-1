@@ -66,6 +66,15 @@ article li{margin:.2em 0}
 .cover{margin:16px 0;border:1px solid var(--line);border-radius:6px;display:block;max-width:100%;height:auto}
 .note{font-size:15px;background:var(--blue-soft);border-radius:6px;padding:10px 14px;margin:12px 0;max-width:66ch}
 .math{font-family:var(--f-mono);font-size:.92em;white-space:nowrap}
+#avisos-prof{display:grid;gap:10px;margin:14px 0 16px;color:#1d2340}
+.aviso{border:2px solid #f5b301;background:#fff8e1;border-radius:14px;padding:12px 14px;transition:opacity .3s,transform .3s}
+.aviso.av-fin{opacity:0;transform:scale(.97)}
+.av-h{font-size:.78em;font-weight:800;letter-spacing:.04em;color:#9a6700;text-transform:uppercase}
+.av-t{display:block;font-size:1.12em;margin:3px 0 2px}
+.aviso p{margin:4px 0 8px}
+.av-b{display:flex;flex-wrap:wrap;gap:8px}
+.aviso .btn{background:#1e2a6e;color:#fff;border-color:#1e2a6e}.aviso .btn.ghost{background:#fff;color:#1e2a6e}
+
 .icalc{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;padding:14px;border:1.5px solid color-mix(in srgb,var(--c,#2e9e5b) 40%,#ddd);border-radius:14px}
 .icalc label{display:flex;flex-direction:column;font-size:.85em;font-weight:700;gap:4px}
 .icalc input,.icalc select{font:inherit;padding:7px 9px;border:1.5px solid #ccd;border-radius:9px;width:130px;background:#fff}
@@ -422,6 +431,7 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
       <circle cx="295" cy="22" r="6" fill="#ffd23f"/><text x="295" y="9" fill="#ffd23f" font-family="JetBrains Mono, monospace" font-size="13" text-anchor="middle">½</text>
     </svg>
   </div>
+  <div id="avisos-prof" hidden></div>
   <nav class="tiles" aria-label="Propósitos formativos">
     <a class="tile" data-pf="1" href="#pf1"><span class="sym">p → q</span><span><span class="tn">PF1</span><span class="tt">Lógica matemática</span></span></a>
     <a class="tile" data-pf="2" href="#pf2"><span class="sym">• ▬ 0</span><span><span class="tn">PF2</span><span class="tt">Conteo</span></span></a>
@@ -849,6 +859,43 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
 <footer><div class="wrap">Pensamiento Matemático I · Preparatoria Oficial Núm. 252 · Prof. Raciel Ramos Melecio · <a href="https://ramosmelecioraciel-profe.github.io/" style="color:inherit">Todas mis asignaturas</a></div></footer>
 
 <script>
+// AVISOS Y TEMAS publicados por el profesor desde su app de Seguimiento
+(function(){
+  const SEG='';   // dirección /exec de la Hoja de Seguimiento del profesor (solo da avisos vigentes y temas)
+  let pr=null;
+  window.blogPub=()=>pr||(pr=!SEG?Promise.resolve(null):Promise.race([
+    fetch(SEG+'?accion=blog&asig=PM1',{cache:'no-store'}).then(r=>r.json()),
+    new Promise((_,no)=>setTimeout(()=>no('tiempo'),6000))]).catch(()=>null));
+  window.cargarAvance=()=>blogPub().then(d=>d&&d.ok&&d.avance?d.avance:fetch('avance.json',{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({})));
+  const URL='https://script.google.com/macros/s/AKfycbwHqdoeheOWDYq9cho9NqCHgZV3_IqR1XM55QhPgdY1jZ782HI7Cm27zMWuopqCCfnC5w/exec', ASIG='PM1', KEY='alumno_pm252';
+  const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const yo=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){return null;}};
+  const leidos=()=>{try{return JSON.parse(localStorage.getItem('avisos_ok_'+ASIG)||'[]');}catch(e){return [];}};
+  const gn=t=>String(t||'').replace(/\D/g,'');
+  function enviar(det){const a=yo();if(!a)return;const b=new URLSearchParams({tipo:'acceso',nombre:a.nombre,grupo:a.grupo,asignatura:ASIG,accion:'Enterado aviso',detalle:det});
+    try{if(navigator.sendBeacon&&navigator.sendBeacon(URL,b))return;}catch(e){} fetch(URL,{method:'POST',mode:'no-cors',body:b,keepalive:true}).catch(()=>{});}
+  function pintar(){
+    blogPub().then(d=>{
+      const box=document.getElementById('avisos-prof'); if(!box) return;
+      if(!d||!d.ok){box.hidden=true;return;}
+      const a=yo(), g=a?gn(a.grupo):'', ok=leidos();
+      const L=(d.avisos||[]).filter(x=>!ok.includes(x.id)&&(!x.grupos||!x.grupos.length||!g||x.grupos.some(y=>gn(y)===g)));
+      box.hidden=!L.length;
+      box.innerHTML=L.map(x=>{const arch=/archivos\//.test(x.enlace||''),href=esc(x.enlace||'');
+        return '<div class="aviso" data-id="'+esc(x.id)+'"><div class="av-h">📢 Aviso del profesor</div><b class="av-t">'+esc(x.titulo)+'</b>'+(x.msg?'<p>'+esc(x.msg).replace(/\n/g,'<br>')+'</p>':'')+
+          '<div class="av-b">'+(x.enlace?'<a class="btn" href="'+href+'"'+(arch?' download':(/^https?:/.test(x.enlace)?' target="_blank" rel="noopener"':''))+'>'+(arch?'⬇️ Descargar':'Abrir')+'</a>':'')+'<button type="button" class="btn ghost av-ok">✔ Enterado</button></div></div>';}).join('');
+      box.querySelectorAll('.av-ok').forEach(b=>b.addEventListener('click',()=>{const el=b.closest('.aviso'),id=el.dataset.id,t=el.querySelector('.av-t').textContent;
+        enviar(id+' · '+t); const k=leidos(); k.push(id); try{localStorage.setItem('avisos_ok_'+ASIG,JSON.stringify(k.slice(-60)));}catch(e){}
+        el.classList.add('av-fin'); setTimeout(()=>{el.remove(); if(!box.querySelector('.aviso')) box.hidden=true;},350);}));
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',pintar); else pintar();
+  // si el alumno se registra después de entrar, se vuelven a filtrar por su grupo
+  window.addEventListener('storage',e=>{if(e.key===KEY)pintar();});
+  document.addEventListener('submit',e=>{if(e.target&&e.target.id==='who-form')setTimeout(pintar,50);},true);
+})();
+</script>
+<script>
 (function(){
   // Filtros
   const chips=[...document.querySelectorAll('.chip')], posts=[...document.querySelectorAll('article')];
@@ -1036,7 +1083,7 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
   function porHash(){ const m=location.hash.match(/^#auto-(\w+)$/); if(m&&estado[m[1]]==='abierto'){ const all=document.getElementById('f-all'); if(all) all.click(); abrir(m[1],true); } }
   window.addEventListener('hashchange',porHash);
   chips.forEach(c=>{c.disabled=true;});
-  fetch('avance.json',{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({})).then(aplicar);
+  cargarAvance().then(aplicar);
 })();
 </script>
 
@@ -1054,7 +1101,7 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
     if(v==='proximo') return ['prox','Próximo tema'];
     return null;
   }
-  fetch('avance.json',{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({})).then(av=>{
+  cargarAvance().then(av=>{
     const t=av.temas||{};
     Object.keys(t).forEach(k=>{
       const b=badge(t[k]); if(!b) return;
@@ -1128,7 +1175,7 @@ table.cal td .dots i{width:8px;height:8px;border-radius:50%}
   // Se suman evaluaciones y temas de esta materia
   Promise.all([
     fetch('evaluaciones.json',{cache:'no-store'}).then(r=>r.ok?r.json():[]).catch(()=>[]),
-    fetch('avance.json',{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({}))
+    cargarAvance()
   ]).then(([evs,av])=>{
     (evs||[]).forEach(e=>{ if(e&&e.fecha) ev.push({a:e.fecha,b:e.fin||null,t:'eval',x:e.titulo}); });
     const nombres={pf1:'PF1 Lógica matemática',pf2:'PF2 Conteo',pf3:'PF3 Naturales y enteros',pf4:'PF4 Fracciones y porcentajes',pf5:'PF5 Potencias y raíces',pf6:'PF6 La medición',pf7:'PF7 Operaciones combinadas'};
